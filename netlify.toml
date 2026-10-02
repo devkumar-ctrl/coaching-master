@@ -23,7 +23,7 @@
   # build and makes every /api/* route return HTTP 500 at runtime while the
   # build still passes.
   NEXT_PUBLIC_API_URL = "https://coaching-master-psi.vercel.app"
-  NEXT_PUBLIC_APP_URL = "https://coachingmaster.netlify.app"
+  NEXT_PUBLIC_APP_URL = "https://superb-toffee-966a8c.netlify.app"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
