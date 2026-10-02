@@ -1,0 +1,25 @@
+# Netlify configuration — frontend (Next.js App Router)
+#
+# Deploy the REPOSITORY ROOT to Netlify; this file points the build at ./frontend.
+
+[build]
+  base = "frontend"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # NEXT_PUBLIC_* values are inlined into the client bundle at build time, so
+  # NEXT_PUBLIC_API_URL must be set here (not only at runtime). It is the origin
+  # that the /api/* rewrite proxies to, e.g. https://your-backend.vercel.app
+  # Setting it keeps every browser request same-origin, so the backend needs no
+  # CORS configuration.
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
