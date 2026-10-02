@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@auth/mongodb-adapter": "^3.10.0",
-    "clsx": "^2.1.1",
     "cloudinary": "^2.7.0",
+    "clsx": "^2.1.1",
     "mongodb": "^6.17.0",
-    "next": "15.4.2",
+    "next": "^15.5.27",
     "next-auth": "^5.0.0-beta.29",
-    "nodemailer": "^7.0.5",
+    "nodemailer": "^10.0.13",
     "razorpay": "^2.9.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -32,7 +32,11 @@
     "@types/react-dom": "^19",
     "dotenv-cli": "^8.0.0",
     "eslint": "^9",
-    "eslint-config-next": "15.4.2",
+    "eslint-config-next": "^15.5.27",
     "typescript": "^5"
+  },
+  "overrides": {
+    "postcss": "^8.5.28",
+    "sharp": "^0.35.5"
   }
 }
