@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // This app is one half of a monorepo, but there is no root package.json
+  // "workspaces" field, so Next.js sees both package-lock.json files, picks the
+  // repo root as the workspace root and warns about it. Pinning the tracing
+  // root to this directory keeps output file tracing scoped to this app.
+  outputFileTracingRoot: process.cwd(),
+
   eslint: {
     ignoreDuringBuilds: true,
   },
