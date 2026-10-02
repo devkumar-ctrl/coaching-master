@@ -5,9 +5,13 @@
 [build]
   base = "frontend"
   command = "npm run build"
+  # Must be named explicitly: when unset, Netlify defaults publish to the base
+  # directory and @netlify/plugin-nextjs aborts with "Your publish directory
+  # cannot be the same as the base directory of your site".
+  publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
   # NEXT_PUBLIC_* values are inlined into the client bundle at build time, so
   # NEXT_PUBLIC_API_URL must be set here (not only at runtime). It is the origin
   # that the /api/* rewrite proxies to, e.g. https://your-backend.vercel.app
