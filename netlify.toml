@@ -7,9 +7,15 @@
 #
 # `base` is deliberately omitted: it is already set in the Netlify UI, and
 # repeating it here would be redundant.
+#
+# `publish` must NOT be left unset. When it is unset Netlify defaults it to the
+# base directory, and @netlify/plugin-nextjs then aborts with:
+#   "Your publish directory cannot be the same as the base directory of your site"
+# Naming it explicitly breaks that collision.
 
 [build]
   command = "npm run build"
+  publish = ".next"
 
 [build.environment]
   # @netlify/plugin-nextjs v5 refuses to run on Node 20 and falls back to 22,
