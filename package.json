@@ -1,0 +1,38 @@
+{
+  "name": "yuvabot-backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack --port 4000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@auth/mongodb-adapter": "^3.10.0",
+    "clsx": "^2.1.1",
+    "cloudinary": "^2.7.0",
+    "mongodb": "^6.17.0",
+    "next": "15.4.2",
+    "next-auth": "^5.0.0-beta.29",
+    "nodemailer": "^7.0.5",
+    "razorpay": "^2.9.6",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "socket.io": "^4.8.1",
+    "tailwind-merge": "^3.3.1",
+    "uuid": "^11.1.0",
+    "zod": "^4.0.5"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv-cli": "^8.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.2",
+    "typescript": "^5"
+  }
+}
