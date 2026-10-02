@@ -29,7 +29,18 @@ export function getClientPromise(): Promise<MongoClient> {
     if (!uri) {
       throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
     }
-    globalWithMongo._mongoClientPromise = new MongoClient(uri, options).connect()
+    const pending = new MongoClient(uri, options).connect()
+
+    // Never cache a failed connection. On serverless the module scope is reused
+    // across warm invocations, so caching the rejection would make one failed
+    // handshake fail every later request until the instance is recycled.
+    pending.catch(() => {
+      if (globalWithMongo._mongoClientPromise === pending) {
+        globalWithMongo._mongoClientPromise = undefined
+      }
+    })
+
+    globalWithMongo._mongoClientPromise = pending
   }
   return globalWithMongo._mongoClientPromise
 }
