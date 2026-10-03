@@ -1,15 +1,10 @@
-# Netlify configuration — frontend only.
+# Netlify configuration — this repository IS the Next.js app.
 #
-# The Netlify UI sets Base directory = `frontend`, and Netlify resolves
-# netlify.toml from that base directory. That means the root-level
-# netlify.toml is IGNORED for this project, so the settings the build depends
-# on have to live here.
-#
-# `base` is deliberately omitted: it is already set in the Netlify UI, and
-# repeating it here would be redundant.
+# Deploy the REPOSITORY ROOT. There is no base directory, and Netlify resolves
+# this file from the repo root.
 #
 # `publish` must NOT be left unset. When it is unset Netlify defaults it to the
-# base directory, and @netlify/plugin-nextjs then aborts with:
+# repository root and @netlify/plugin-nextjs then aborts with:
 #   "Your publish directory cannot be the same as the base directory of your site"
 # Naming it explicitly breaks that collision.
 
@@ -23,15 +18,16 @@
   NODE_VERSION = "22"
   # NEXT_PUBLIC_* values are inlined into the client bundle at build time, so
   # NEXT_PUBLIC_API_URL must be present during the build (not only at runtime).
-  # It is the origin that the /api/* rewrite in next.config.ts proxies to,
-  # e.g. https://your-backend.vercel.app. Keeping every browser request
-  # same-origin means the backend needs no CORS configuration.
+  # It is the origin that the /api/* rewrite in next.config.ts proxies to.
+  # Keeping every browser request same-origin means the backend needs no CORS
+  # configuration.
   #
   # These MUST be set here rather than only in the Netlify UI: next.config.ts
-  # falls back to http://localhost:4000 when NEXT_PUBLIC_API_URL is absent, and
-  # that fallback is baked into the build's routes manifest. A build without
-  # this variable therefore *succeeds* and then serves a plain-text HTTP 500 on
-  # every /api/* route, because Netlify's proxy cannot reach localhost.
+  # throws on a production build that is missing NEXT_PUBLIC_API_URL. An earlier
+  # version silently fell back to http://localhost:4000, which got baked into
+  # the build's routes manifest — the build then passed and every /api/* route
+  # returned a plain-text HTTP 500, because Netlify's proxy could not reach
+  # localhost. Keep this in sync with the backend's AUTH_URL.
   NEXT_PUBLIC_API_URL = "https://coaching-master-psi.vercel.app"
   # Canonical frontend origin. Auth.js on the backend sets AUTH_URL to the same
   # value; keeping them identical means session cookies are issued for the
