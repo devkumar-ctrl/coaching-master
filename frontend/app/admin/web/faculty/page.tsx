@@ -560,7 +560,7 @@ export default function AdminWebFacultyPage() {
                 id="isVerified"
                 checked={formData.isVerified}
                 onChange={(e) => setFormData(prev => ({ ...prev, isVerified: e.target.checked }))}
-                className="w-4 h-4 text-primary bg-background border-gray-300 rounded focus:ring-primary focus:ring-2"
+                className="w-4 h-4 text-primary bg-background border-gray-300 rounded-xs focus-visible:ring-primary focus-visible:ring-2"
               />
               <Label htmlFor="isVerified">Verified Teacher</Label>
             </div>

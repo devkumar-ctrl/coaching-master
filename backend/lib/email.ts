@@ -462,3 +462,71 @@ export async function testSMTPConnection() {
     return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
   }
 }
+
+interface LessonReminderData {
+  studentName: string;
+  studentEmail: string;
+  courseTitle: string;
+  lessonTitle: string;
+  teacherName: string;
+  startTime: Date;
+  joinUrl: string;
+  kind: 'scheduled' | '24h' | '1h';
+}
+
+// Notifies a learner about an upcoming live lesson (invite or reminder).
+export async function sendLessonReminder(data: LessonReminderData) {
+  const { studentName, studentEmail, courseTitle, lessonTitle, teacherName, startTime, joinUrl, kind } = data;
+
+  const heading =
+    kind === 'scheduled' ? 'New Live Class Scheduled' : kind === '24h' ? 'Live Class Tomorrow' : 'Live Class Starting Soon';
+
+  const emailHTML = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>${heading}</title>
+    </head>
+    <body style="font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:#1f1f1f;max-width:600px;margin:0 auto;padding:20px;background:#f5f5f5;">
+      <div style="background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e9e9e9;">
+        <div style="background:#e60035;color:#ffffff;padding:28px 20px;text-align:center;">
+          <h1 style="margin:0;font-size:22px;">${heading}</h1>
+        </div>
+        <div style="padding:32px 28px;">
+          <p>Hi ${studentName},</p>
+          <p>Your live class for <strong>${courseTitle}</strong> is on the way.</p>
+          <div style="background:#fbe2e8;border-left:4px solid #e60035;padding:18px 20px;margin:22px 0;border-radius:8px;">
+            <p style="margin:0 0 8px;"><strong>${lessonTitle}</strong></p>
+            <p style="margin:0 0 4px;">Instructor: ${teacherName}</p>
+            <p style="margin:0;">Starts: ${startTime.toUTCString()} (UTC)</p>
+          </div>
+          <div style="text-align:center;margin:28px 0;">
+            <a href="${joinUrl}" style="display:inline-block;background:#e60035;color:#ffffff;padding:14px 32px;border-radius:9999px;text-decoration:none;font-weight:600;">Join Class</a>
+          </div>
+          <p style="color:#626262;font-size:13px;">Times are shown in UTC. Open your dashboard to see it in your local timezone and add it to your calendar.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  if (!isSmtpConfigured()) {
+    console.warn('SMTP not configured — skipping lesson reminder email to', studentEmail);
+    return { success: false, error: 'SMTP not configured' };
+  }
+
+  try {
+    const info = await transporter.sendMail({
+      from: emailFrom,
+      to: studentEmail,
+      subject: `${heading}: ${lessonTitle}`,
+      html: emailHTML,
+    });
+    return { success: true, messageId: info.messageId };
+  } catch (error) {
+    console.error('❌ Error sending lesson reminder:', error);
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
+  }
+}

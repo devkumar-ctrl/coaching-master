@@ -64,12 +64,12 @@ export default function RegisterPage() {
     <div className="flex min-h-dvh items-center justify-center bg-gradient-to-br from-primary/15 via-background to-secondary/20 px-4 py-10">
       <Card className="w-full max-w-md border-0 shadow-2xl">
         <CardHeader className="text-center">
-          <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-primary/70 shadow-lg">
+          <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-gradient-to-r from-primary to-primary/70 shadow-lg">
             <Rocket className="h-7 w-7 text-primary-foreground" />
           </div>
           <CardTitle className="text-2xl font-bold">Create your account</CardTitle>
           <CardDescription>
-            Join YuvaBot Lab to enroll in courses and track your tech journey.
+            Join AlmaBetter to enroll in courses and track your tech journey.
           </CardDescription>
         </CardHeader>
 

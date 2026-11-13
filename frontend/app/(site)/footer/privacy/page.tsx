@@ -189,7 +189,7 @@ export default function PrivacyPage() {
             
             <div className="grid md:grid-cols-2 gap-8">
               {dataTypes.map((data, index) => (
-                <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all">
+                <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className={`flex-shrink-0 w-12 h-12 ${data.color} rounded-full flex items-center justify-center`}>
@@ -244,7 +244,7 @@ export default function PrivacyPage() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {rights.map((right, index) => (
-                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all">
+                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition">
                   <CardContent className="p-6">
                     <div className="space-y-4">
                       <div>
@@ -335,7 +335,7 @@ export default function PrivacyPage() {
                     <Mail className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Email</h3>
-                  <p className="text-sm text-muted-foreground mb-4">privacy@yuvabot.com</p>
+                  <p className="text-sm text-muted-foreground mb-4">info@almabetter.com</p>
                   <Button size="sm" variant="outline" className="w-full">
                     Send Email
                   </Button>

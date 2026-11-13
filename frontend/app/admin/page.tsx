@@ -246,7 +246,7 @@ export default function AdminDashboard() {
               </div>
               <p className="text-xl font-bold leading-tight">{card.value}</p>
               <p className="text-xs font-medium text-muted-foreground">{card.label}</p>
-              <p className="mt-1 text-[11px] text-muted-foreground/70">{card.hint}</p>
+              <p className="mt-1 text-xs text-muted-foreground/70">{card.hint}</p>
             </CardContent>
           </Card>
         ))}

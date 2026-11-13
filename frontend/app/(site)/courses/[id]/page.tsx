@@ -246,6 +246,17 @@ export default function CourseDetailPage() {
   const [reviewsLoading, setReviewsLoading] = useState(false);
   const [enrolling, setEnrolling] = useState(false);
   const [isEnrolled, setIsEnrolled] = useState(false);
+  const [couponInput, setCouponInput] = useState("");
+  const [appliedCoupon, setAppliedCoupon] = useState<{
+    code: string;
+    discountPercent: number;
+    discountAmount: number;
+    originalAmount: number;
+    finalAmount: number;
+    isFree: boolean;
+  } | null>(null);
+  const [couponChecking, setCouponChecking] = useState(false);
+  const [couponError, setCouponError] = useState<string | null>(null);
   const [reviewPage, setReviewPage] = useState(1);
   const [hasMoreReviews, setHasMoreReviews] = useState(true);
   const { data: session } = useSession();
@@ -299,6 +310,51 @@ export default function CourseDetailPage() {
     }
   };
 
+  const applyCoupon = async () => {
+    const code = couponInput.trim();
+    setCouponError(null);
+
+    if (!session?.user?.id) {
+      alert('Please sign in to use a coupon');
+      return;
+    }
+
+    if (!code) {
+      setCouponError('Enter a coupon code.');
+      return;
+    }
+
+    setCouponChecking(true);
+    try {
+      const response = await fetch('/api/coupons/validate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code, courseId }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        setCouponError(data.error || 'Invalid coupon');
+        setAppliedCoupon(null);
+        return;
+      }
+
+      setAppliedCoupon(data);
+      setCouponError(null);
+    } catch (error) {
+      console.error('Coupon validation error:', error);
+      setCouponError('Could not validate coupon. Please try again.');
+    } finally {
+      setCouponChecking(false);
+    }
+  };
+
+  const clearCoupon = () => {
+    setAppliedCoupon(null);
+    setCouponInput("");
+    setCouponError(null);
+  };
+
   const handleEnrollment = async () => {
     if (!session?.user?.id) {
       alert('Please sign in to enroll in courses');
@@ -314,6 +370,27 @@ export default function CourseDetailPage() {
 
     setEnrolling(true);
     try {
+      // 100% coupon → free enrollment, skip Razorpay entirely
+      if (appliedCoupon?.isFree) {
+        const freeRes = await fetch('/api/enrollments/free', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ courseId, couponCode: appliedCoupon.code }),
+        });
+
+        const freeData = await freeRes.json();
+        if (!freeRes.ok) {
+          throw new Error(freeData.error || 'Failed to enroll for free');
+        }
+
+        setIsEnrolled(true);
+        alert('🎉 Enrolled for free with your coupon!');
+        fetchCourse();
+        return;
+      }
+
+      const payableAmount = appliedCoupon ? appliedCoupon.finalAmount : course.price;
+
       // Create Razorpay order
       const response = await fetch('/api/payments', {
         method: 'POST',
@@ -321,9 +398,10 @@ export default function CourseDetailPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: course.price,
+          amount: payableAmount,
           courseId: courseId,
-          courseName: course.title
+          courseName: course.title,
+          ...(appliedCoupon ? { couponCode: appliedCoupon.code } : {}),
         }),
       });
 
@@ -334,6 +412,23 @@ export default function CourseDetailPage() {
 
       const orderData = await response.json();
 
+      // Backend may report free if the coupon covers everything
+      if (orderData.free) {
+        const freeRes = await fetch('/api/enrollments/free', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ courseId, couponCode: orderData.couponCode }),
+        });
+        const freeData = await freeRes.json().catch(() => null);
+        if (!freeRes.ok) {
+          throw new Error(freeData?.error || 'Failed to enroll for free');
+        }
+        setIsEnrolled(true);
+        alert('🎉 Enrolled for free with your coupon!');
+        fetchCourse();
+        return;
+      }
+
       // Load Razorpay script
       const script = document.createElement('script');
       script.src = 'https://checkout.razorpay.com/v1/checkout.js';
@@ -342,7 +437,7 @@ export default function CourseDetailPage() {
           key: orderData.key,
           amount: orderData.amount,
           currency: orderData.currency,
-          name: 'YuvaBot Lab',
+          name: 'AlmaBetter',
           description: `Enrollment for ${course.title}`,
           image: '/logo.jpg',
           order_id: orderData.orderId,
@@ -350,9 +445,12 @@ export default function CourseDetailPage() {
             name: session.user.name || '',
             email: session.user.email || '',
           },
-          theme: {
-            color: '#2563eb'
-          },
+          theme: (() => {
+            const brandColor = getComputedStyle(document.documentElement)
+              .getPropertyValue("--primary")
+              .trim()
+            return brandColor ? { color: brandColor } : undefined
+          })(),
           handler: async function (response: any) {
             try {
               // Verify payment on server
@@ -439,14 +537,14 @@ export default function CourseDetailPage() {
 
   const getCategoryBadgeColor = (category: string) => {
     switch (category) {
-      case "cyber-security": return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400";
-      case "ethical-hacking": return "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400";
+      case "agentic-ai": return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400";
+      case "software-development": return "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400";
       case "ai-ml": return "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400";
       case "data-science": return "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400";
-      case "iot-embedded": return "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-400";
-      case "robotics": return "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-400";
+      case "masters-degree": return "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-400";
+      case "cloud-computing": return "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-400";
       case "web-development": return "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-400";
-      case "ev-technology": return "bg-lime-100 text-lime-800 dark:bg-lime-900/30 dark:text-lime-400";
+      case "data-analytics": return "bg-lime-100 text-lime-800 dark:bg-lime-900/30 dark:text-lime-400";
       case "cloud-devops": return "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400";
       case "python": return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
       default: return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
@@ -474,7 +572,7 @@ export default function CourseDetailPage() {
             The course you're looking for doesn't exist or has been removed.
           </p>
           <Link href="/courses">
-            <Button className="transition-all hover:scale-[1.02]">
+            <Button className="transition hover:scale-[1.02]">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Courses
             </Button>
@@ -662,15 +760,75 @@ export default function CourseDetailPage() {
           <div className="sticky top-4 sm:top-6">
             <Card className="border-0 shadow-lg">
               <CardContent className="p-4 sm:p-6">
-                <div className="text-center mb-6">
+                <div className="text-center mb-4">
+                  {appliedCoupon && (
+                    <div className="mb-1 text-base text-muted-foreground line-through">
+                      ₹{course.price.toLocaleString()}
+                    </div>
+                  )}
                   <div className="text-2xl sm:text-3xl font-bold text-primary mb-2">
-                    ₹{course.price.toLocaleString()}
+                    {appliedCoupon?.isFree
+                      ? 'FREE'
+                      : `₹${(appliedCoupon ? appliedCoupon.finalAmount : course.price).toLocaleString()}`}
                   </div>
-                  <p className="text-xs sm:text-sm text-muted-foreground">Course Fee</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">
+                    {appliedCoupon
+                      ? `${appliedCoupon.discountPercent}% off applied`
+                      : 'Course Fee'}
+                  </p>
                 </div>
-                
+
+                {!isEnrolled && (
+                  <div className="mb-3 sm:mb-4">
+                    {appliedCoupon ? (
+                      <div className="flex items-center justify-between rounded-md border border-green-600/40 bg-green-600/10 px-3 py-2 text-sm">
+                        <span className="truncate font-mono text-green-700">
+                          {appliedCoupon.code}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={clearCoupon}
+                          className="ml-2 shrink-0 text-xs text-muted-foreground underline hover:text-foreground"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          value={couponInput}
+                          onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
+                          placeholder="Coupon code"
+                          aria-label="Coupon code"
+                          className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm outline-none focus-visible:ring-[3px] focus-visible:ring-ring"
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault();
+                              applyCoupon();
+                            }
+                          }}
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          className="shrink-0"
+                          onClick={applyCoupon}
+                          disabled={couponChecking}
+                        >
+                          {couponChecking ? 'Checking…' : 'Apply'}
+                        </Button>
+                      </div>
+                    )}
+                    {couponError && (
+                      <p className="mt-1.5 text-xs text-destructive">{couponError}</p>
+                    )}
+                  </div>
+                )}
+
                 <Button 
-                  className="w-full mb-3 sm:mb-4 transition-all hover:scale-[1.02]" 
+                  className="w-full mb-3 sm:mb-4 transition hover:scale-[1.02]" 
                   size="lg"
                   onClick={handleEnrollment}
                   disabled={enrolling || isEnrolled || session?.user?.role !== 'STUDENT'}
@@ -678,11 +836,13 @@ export default function CourseDetailPage() {
                   {enrolling ? (
                     <div className="flex items-center">
                       <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Processing Payment...
+                      Processing...
                     </div>
                   ) : 
                    isEnrolled ? '✅ Enrolled' : 
                    session?.user?.role !== 'STUDENT' ? 'Sign in as Student' :
+                   appliedCoupon?.isFree ? 'Enroll for Free' :
+                   appliedCoupon ? `Pay ₹${appliedCoupon.finalAmount.toLocaleString()} & Enroll` :
                    `Pay ₹${course?.price?.toLocaleString()} & Enroll`}
                 </Button>
                 

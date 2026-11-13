@@ -98,7 +98,7 @@ export default function MarketingPage({ params }: { params: Promise<{ id: string
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 dark:from-purple-600 dark:to-indigo-600 rounded-xl flex items-center justify-center shadow-lg ring-2 ring-amber-200 dark:ring-purple-400/30">
+                <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 dark:from-purple-600 dark:to-indigo-600 rounded-lg flex items-center justify-center shadow-lg ring-2 ring-amber-200 dark:ring-purple-400/30">
                   <Mail className="h-6 w-6 text-white" />
                 </div>
                 <div>
@@ -148,21 +148,21 @@ export default function MarketingPage({ params }: { params: Promise<{ id: string
                   onChange={(e) => setEmailList(e.target.value)}
                   placeholder="student1@gmail.com, student2@gmail.com
 student3@gmail.com, student4@gmail.com"
-                  className="min-h-40 border-2 border-amber-200 dark:border-purple-500/30 rounded-xl focus:border-amber-500 dark:focus:border-purple-400 focus:ring-2 focus:ring-amber-500/20 dark:focus:ring-purple-500/20 transition-all duration-200 resize-none font-mono text-sm bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-gray-100"
+                  className="min-h-40 border-2 border-amber-200 dark:border-purple-500/30 rounded-md focus-visible:border-primary dark:focus-visible:border-purple-400 focus-visible:ring-2 focus-visible:ring-ring transition duration-fast resize-none font-mono text-sm bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-gray-100"
                 />
               </div>
               
               <Button 
                 onClick={parseEmails} 
                 variant="outline" 
-                className="w-full md:w-auto border-2 border-amber-300 dark:border-purple-400 text-amber-700 dark:text-purple-300 hover:bg-amber-100 dark:hover:bg-purple-900/30 hover:border-amber-400 dark:hover:border-purple-300 transition-all duration-200 font-semibold bg-gradient-to-r from-amber-50 to-orange-50 dark:from-purple-900/20 dark:to-indigo-900/20"
+                className="w-full md:w-auto border-2 border-amber-300 dark:border-purple-400 text-amber-700 dark:text-purple-300 hover:bg-amber-100 dark:hover:bg-purple-900/30 hover:border-amber-400 dark:hover:border-purple-300 transition duration-fast font-semibold bg-gradient-to-r from-amber-50 to-orange-50 dark:from-purple-900/20 dark:to-indigo-900/20"
               >
                 <CheckCircle className="h-4 w-4 mr-2" />
                 Parse & Validate Emails
               </Button>
               
               {validEmails.length > 0 && (
-                <div className="bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/30 dark:to-green-900/30 rounded-xl p-6 border border-emerald-200 dark:border-emerald-700/50 ring-1 ring-emerald-200/50 dark:ring-emerald-600/30">
+                <div className="bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/30 dark:to-green-900/30 rounded-lg p-6 border border-emerald-200 dark:border-emerald-700/50 ring-1 ring-emerald-200/50 dark:ring-emerald-600/30">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full flex items-center justify-center shadow-lg">
                       <CheckCircle className="h-4 w-4 text-white" />
@@ -176,7 +176,7 @@ student3@gmail.com, student4@gmail.com"
                       <Badge 
                         key={index} 
                         variant="secondary" 
-                        className="cursor-pointer hover:bg-red-100 dark:hover:bg-red-900/30 hover:text-red-700 dark:hover:text-red-300 transition-all duration-200 px-3 py-1 bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300"
+                        className="cursor-pointer hover:bg-red-100 dark:hover:bg-red-900/30 hover:text-red-700 dark:hover:text-red-300 transition duration-fast px-3 py-1 bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300"
                         onClick={() => removeEmail(email)}
                       >
                         {email} 
@@ -214,8 +214,8 @@ student3@gmail.com, student4@gmail.com"
                   id="subject"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  placeholder="🎉 Special Announcement from YuvaBot Lab"
-                  className="border-2 border-purple-200 dark:border-pink-500/30 rounded-xl focus:border-purple-500 dark:focus:border-pink-400 focus:ring-2 focus:ring-purple-500/20 dark:focus:ring-pink-500/20 transition-all duration-200 h-12 text-base bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-gray-100"
+                  placeholder="🎉 Special Announcement from AlmaBetter"
+                  className="border-2 border-purple-200 dark:border-pink-500/30 rounded-md focus-visible:border-primary dark:focus-visible:border-pink-400 focus-visible:ring-2 focus-visible:ring-ring transition duration-fast h-12 text-base bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-gray-100"
                 />
               </div>
               
@@ -233,7 +233,7 @@ I hope this email finds you well. I wanted to share some exciting news with you.
 
 Best regards,
 Your Teacher"
-                  className="min-h-80 border-2 border-purple-200 dark:border-pink-500/30 rounded-xl focus:border-purple-500 dark:focus:border-pink-400 focus:ring-2 focus:ring-purple-500/20 dark:focus:ring-pink-500/20 transition-all duration-200 resize-none text-base leading-relaxed bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-gray-100"
+                  className="min-h-80 border-2 border-purple-200 dark:border-pink-500/30 rounded-md focus-visible:border-primary dark:focus-visible:border-pink-400 focus-visible:ring-2 focus-visible:ring-ring transition duration-fast resize-none text-base leading-relaxed bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-gray-100"
                 />
               </div>
 
@@ -271,7 +271,7 @@ Your Teacher"
                   onClick={sendBulkEmails}
                   disabled={sending || validEmails.length === 0 || !subject.trim() || !emailContent.trim()}
                   size="lg"
-                  className="min-w-48 h-14 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-cyan-600 dark:to-blue-600 hover:from-blue-700 hover:to-cyan-700 dark:hover:from-cyan-700 dark:hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 text-base font-semibold rounded-xl ring-2 ring-blue-300/50 dark:ring-cyan-400/30 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="min-w-48 h-14 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-cyan-600 dark:to-blue-600 hover:from-blue-700 hover:to-cyan-700 dark:hover:from-cyan-700 dark:hover:to-blue-700 shadow-lg hover:shadow-xl transition duration-fast text-base font-semibold rounded-md ring-2 ring-ring disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {sending ? (
                     <>
@@ -320,7 +320,7 @@ Your Teacher"
                   <div className="space-y-4">
                     {/* Summary Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                      <div className="bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/30 dark:to-green-900/30 rounded-xl p-4 border border-emerald-200 dark:border-emerald-700/50 ring-1 ring-emerald-200/50 dark:ring-emerald-600/30">
+                      <div className="bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/30 dark:to-green-900/30 rounded-lg p-4 border border-emerald-200 dark:border-emerald-700/50 ring-1 ring-emerald-200/50 dark:ring-emerald-600/30">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full flex items-center justify-center shadow-lg">
                             <CheckCircle className="h-6 w-6 text-white" />
@@ -331,7 +331,7 @@ Your Teacher"
                           </div>
                         </div>
                       </div>
-                      <div className="bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/30 dark:to-pink-900/30 rounded-xl p-4 border border-red-200 dark:border-red-700/50 ring-1 ring-red-200/50 dark:ring-red-600/30">
+                      <div className="bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/30 dark:to-pink-900/30 rounded-lg p-4 border border-red-200 dark:border-red-700/50 ring-1 ring-red-200/50 dark:ring-red-600/30">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
                             <XCircle className="h-6 w-6 text-white" />
@@ -347,7 +347,7 @@ Your Teacher"
                     {/* Detailed Results */}
                     <div className="space-y-2 max-h-80 overflow-y-auto">
                       {results.map((result, index) => (
-                        <div key={index} className="flex items-center justify-between p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 hover:bg-white/90 dark:hover:bg-gray-700/80 transition-all duration-200 ring-1 ring-gray-200/50 dark:ring-gray-700/50">
+                        <div key={index} className="flex items-center justify-between p-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 hover:bg-white/90 dark:hover:bg-gray-700/80 transition duration-fast ring-1 ring-gray-200/50 dark:ring-gray-700/50">
                           <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{result.email}</span>
                           {result.success ? (
                             <Badge variant="default" className="bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700 px-3 py-1">

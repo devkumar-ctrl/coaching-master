@@ -60,14 +60,14 @@ import {
 import { AdminPageHeader } from "@/components/admin/page-header";
 
 const CATEGORIES = [
-  "cyber-security",
-  "ethical-hacking",
+  "agentic-ai",
+  "software-development",
   "ai-ml",
   "data-science",
-  "iot-embedded",
-  "robotics",
+  "masters-degree",
+  "cloud-computing",
   "web-development",
-  "ev-technology",
+  "data-analytics",
   "cloud-devops",
   "python",
 ];
@@ -111,7 +111,7 @@ const emptyForm = {
   title: "",
   tagline: "",
   description: "",
-  category: "cyber-security",
+  category: "agentic-ai",
   categoryCustom: "",
   level: "beginner",
   deliveryMode: "live-online",
@@ -571,7 +571,7 @@ export default function AdminCoursesPage() {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge variant="outline" className="font-mono text-[11px]">
+                        <Badge variant="outline" className="font-mono text-xs">
                           {course.category}
                         </Badge>
                       </TableCell>
@@ -630,7 +630,7 @@ export default function AdminCoursesPage() {
                             <DropdownMenuItem
                               onSelect={() => handleDelete(course)}
                               disabled={busyId === course._id}
-                              className="text-red-600 focus:text-red-600"
+                              className="text-red-600 focus-visible:text-red-600"
                             >
                               <Trash2 className="mr-2 h-4 w-4" /> Delete
                             </DropdownMenuItem>
@@ -719,7 +719,7 @@ export default function AdminCoursesPage() {
                   id="title"
                   value={form.title}
                   onChange={(e) => set("title")(e.target.value)}
-                  placeholder="e.g. Ethical Hacking Masterclass"
+                  placeholder="e.g. Software Development Masterclass"
                 />
               </div>
               <div className="sm:col-span-2">

@@ -21,7 +21,7 @@ export function ProgressSteps({ steps, className }: ProgressStepProps) {
           {/* Step indicator */}
           <div className="flex flex-col items-center">
             <div className={cn(
-              "w-8 h-8 rounded-full flex items-center justify-center border-2 transition-all duration-300",
+              "w-8 h-8 rounded-full flex items-center justify-center border-2 transition duration-fast",
               step.completed 
                 ? "bg-green-500 border-green-500 text-white" 
                 : step.active 
@@ -38,7 +38,7 @@ export function ProgressSteps({ steps, className }: ProgressStepProps) {
             {/* Connector line */}
             {index < steps.length - 1 && (
               <div className={cn(
-                "w-0.5 h-8 mt-2 transition-colors duration-300",
+                "w-0.5 h-8 mt-2 transition-colors duration-fast",
                 step.completed ? "bg-green-500" : "bg-muted"
               )} />
             )}
@@ -47,7 +47,7 @@ export function ProgressSteps({ steps, className }: ProgressStepProps) {
           {/* Step content */}
           <div className="flex-1 pb-8">
             <h3 className={cn(
-              "font-semibold transition-colors duration-300",
+              "font-semibold transition-colors duration-fast",
               step.completed 
                 ? "text-green-600" 
                 : step.active 
@@ -128,7 +128,7 @@ export function CircularProgress({
           strokeDasharray={strokeDasharray}
           strokeDashoffset={strokeDashoffset}
           strokeLinecap="round"
-          className="text-primary transition-all duration-500 ease-out"
+          className="text-primary transition duration-normal ease-out"
         />
       </svg>
       

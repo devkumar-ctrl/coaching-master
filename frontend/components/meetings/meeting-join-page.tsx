@@ -62,7 +62,7 @@ export default function MeetingJoinPage({ meetingId }: { meetingId: string }) {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold">Meeting: {meetingId}</h1>
-      <div className="mt-4 p-4 border rounded">
+      <div className="mt-4 p-4 border rounded-xs">
         <p>Meeting functionality temporarily disabled for debugging.</p>
         <p>Meeting ID: {meetingId}</p>
       </div>

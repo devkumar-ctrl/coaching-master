@@ -161,7 +161,7 @@ export function FloatingActionButtonClient({ className, session, latestCourseId 
     >
       {/* Action Menu */}
       <div className={cn(
-        "absolute bottom-16 right-0 space-y-3 transition-all duration-300",
+        "absolute bottom-16 right-0 space-y-3 transition duration-fast",
         isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
       )}>
         {actions.map((action, index) => (
@@ -177,7 +177,7 @@ export function FloatingActionButtonClient({ className, session, latestCourseId 
               asChild
               size="lg"
               className={cn(
-                "h-12 w-12 rounded-full shadow-lg text-white transition-all duration-300 hover:scale-110",
+                "h-12 w-12 rounded-full shadow-lg text-white transition duration-fast hover:scale-110",
                 action.color
               )}
             >
@@ -193,7 +193,7 @@ export function FloatingActionButtonClient({ className, session, latestCourseId 
       <Button
         size="lg"
         className={cn(
-          "h-14 w-14 rounded-full shadow-lg bg-primary hover:bg-primary/90 transition-all duration-300",
+          "h-14 w-14 rounded-full shadow-lg bg-primary hover:bg-primary/90 transition duration-fast",
           isOpen && "rotate-45",
           isDragging ? "cursor-grabbing scale-105" : "cursor-grab hover:scale-110"
         )}

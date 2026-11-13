@@ -116,7 +116,7 @@ export default function TermsPage() {
               Terms of Service
             </h1>
             <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed">
-              By using YuvaBot Lab, you agree to these terms. Please read them carefully 
+              By using AlmaBetter, you agree to these terms. Please read them carefully 
               to understand your rights and responsibilities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -148,7 +148,7 @@ export default function TermsPage() {
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-2">Agreement to Terms</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      By accessing and using YuvaBot Lab platform, you acknowledge that you have read, 
+                      By accessing and using AlmaBetter platform, you acknowledge that you have read, 
                       understood, and agree to be bound by these Terms of Service. If you do not agree 
                       to these terms, please do not use our services.
                     </p>
@@ -173,7 +173,7 @@ export default function TermsPage() {
             
             <div className="grid md:grid-cols-2 gap-8">
               {sections.map((section, index) => (
-                <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all">
+                <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className={`flex-shrink-0 w-12 h-12 ${section.color} rounded-full flex items-center justify-center`}>
@@ -266,7 +266,7 @@ export default function TermsPage() {
                       <h3 className="text-xl font-semibold text-foreground mb-3">Our Content</h3>
                       <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                         All course materials, videos, text, graphics, logos, and software are owned by 
-                        YuvaBot Lab or our content partners and are protected by copyright laws.
+                        AlmaBetter or our content partners and are protected by copyright laws.
                       </p>
                       <ul className="space-y-1 text-xs text-muted-foreground">
                         <li>• Licensed for personal use only</li>
@@ -387,7 +387,7 @@ export default function TermsPage() {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-foreground">Email Support</h3>
-                      <p className="text-sm text-muted-foreground">legal@yuvabot.com</p>
+                      <p className="text-sm text-muted-foreground">info@almabetter.com</p>
                     </div>
                   </div>
                   <Button variant="outline" size="sm" className="w-full">

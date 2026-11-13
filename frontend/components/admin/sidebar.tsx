@@ -7,10 +7,13 @@ import {
   BookOpen,
   MessageSquare,
   Users,
-  GraduationCap,
-  UserCheck,
   BarChart3,
   Settings,
+  GraduationCap,
+  UserCheck,
+  Megaphone,
+  TicketPercent,
+  Video,
 } from "lucide-react"
 import {
   Sidebar,
@@ -32,12 +35,15 @@ import { useSession } from "next-auth/react"
 const NAV_ITEMS = [
   { number: "01", label: "Overview", href: "/admin", icon: LayoutDashboard },
   { number: "02", label: "Courses", href: "/admin/courses", icon: BookOpen },
-  { number: "03", label: "Testimonials", href: "/admin/testimonials", icon: MessageSquare },
-  { number: "04", label: "Users", href: "/admin/users", icon: Users },
-  { number: "05", label: "Faculty", href: "/admin/web/faculty", icon: GraduationCap },
-  { number: "06", label: "Teacher Applications", href: "/admin/request", icon: UserCheck },
-  { number: "07", label: "Analytics", href: "/admin/analytics", icon: BarChart3 },
-  { number: "08", label: "Settings", href: "/admin/settings", icon: Settings },
+  { number: "03", label: "Lessons", href: "/admin/lessons", icon: Video },
+  { number: "04", label: "Testimonials", href: "/admin/testimonials", icon: MessageSquare },
+  { number: "05", label: "Users", href: "/admin/users", icon: Users },
+  { number: "06", label: "Faculty", href: "/admin/web/faculty", icon: GraduationCap },
+  { number: "07", label: "Teacher Applications", href: "/admin/request", icon: UserCheck },
+  { number: "08", label: "Analytics", href: "/admin/analytics", icon: BarChart3 },
+  { number: "09", label: "Coupons", href: "/admin/coupons", icon: TicketPercent },
+  { number: "10", label: "Announcements", href: "/admin/settings/announcements", icon: Megaphone },
+  { number: "11", label: "Settings", href: "/admin/settings", icon: Settings },
 ]
 
 function isActive(pathname: string, href: string) {
@@ -53,12 +59,12 @@ export function AdminSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-1.5">
-          <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-red-600 to-pink-600 text-[10px] font-black text-white">
-            YB
+          <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground text-xs font-black">
+            AB
           </span>
           <div className="flex flex-col leading-tight group-data-[collapsible=icon]:hidden">
-            <span className="text-sm font-bold tracking-tight">YuvaBot Lab</span>
-            <span className="text-[11px] text-muted-foreground">Admin Console</span>
+            <span className="text-sm font-bold tracking-tight">AlmaBetter</span>
+            <span className="text-xs text-muted-foreground">Admin Console</span>
           </div>
         </div>
       </SidebarHeader>
@@ -75,7 +81,7 @@ export function AdminSidebar() {
                   <SidebarMenuButton asChild isActive={active} tooltip={item.label}>
                     <Link href={item.href}>
                       <Icon className="h-4 w-4" />
-                      <span className="font-mono text-[11px] text-muted-foreground group-data-[collapsible=icon]:hidden">
+                      <span className="font-mono text-xs text-muted-foreground group-data-[collapsible=icon]:hidden">
                         {item.number}
                       </span>
                       <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
@@ -99,7 +105,7 @@ export function AdminSidebar() {
           </Avatar>
           <div className="flex min-w-0 flex-1 flex-col leading-tight group-data-[collapsible=icon]:hidden">
             <span className="truncate text-sm font-medium">{session?.user?.name || "Administrator"}</span>
-            <span className="truncate text-[11px] text-muted-foreground">{session?.user?.email}</span>
+            <span className="truncate text-xs text-muted-foreground">{session?.user?.email}</span>
           </div>
         </div>
         <div className="group-data-[collapsible=icon]:hidden">

@@ -101,14 +101,14 @@ export default function CoursesPage() {
 
   const getCategoryBadgeColor = (category: string) => {
     switch (category) {
-      case "cyber-security": return "bg-red-100 text-red-800";
-      case "ethical-hacking": return "bg-rose-100 text-rose-800";
+      case "agentic-ai": return "bg-red-100 text-red-800";
+      case "software-development": return "bg-rose-100 text-rose-800";
       case "ai-ml": return "bg-purple-100 text-purple-800";
       case "data-science": return "bg-blue-100 text-blue-800";
-      case "iot-embedded": return "bg-cyan-100 text-cyan-800";
-      case "robotics": return "bg-amber-100 text-amber-800";
+      case "masters-degree": return "bg-cyan-100 text-cyan-800";
+      case "cloud-computing": return "bg-amber-100 text-amber-800";
       case "web-development": return "bg-green-100 text-green-800";
-      case "ev-technology": return "bg-lime-100 text-lime-800";
+      case "data-analytics": return "bg-lime-100 text-lime-800";
       case "cloud-devops": return "bg-indigo-100 text-indigo-800";
       case "python": return "bg-yellow-100 text-yellow-800";
       default: return "bg-gray-100 text-gray-800";
@@ -132,7 +132,7 @@ export default function CoursesPage() {
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold mb-4">Training Programs</h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Hands-on programs in IoT, Embedded Systems, Robotics, AI, Cyber Security, EV and beyond — with live industry projects and placement support
+          Hands-on programs in Data Science & AI, Full Stack Development, Agentic AI and Cloud — with live industry projects and placement support
         </p>
       </div>
 
@@ -156,14 +156,14 @@ export default function CoursesPage() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Categories</SelectItem>
-                <SelectItem value="cyber-security">Cyber Security</SelectItem>
-                <SelectItem value="ethical-hacking">Ethical Hacking</SelectItem>
+                <SelectItem value="agentic-ai">Agentic AI</SelectItem>
+                <SelectItem value="software-development">Software Development</SelectItem>
                 <SelectItem value="ai-ml">AI & Machine Learning</SelectItem>
                 <SelectItem value="data-science">Data Science</SelectItem>
-                <SelectItem value="iot-embedded">IoT & Embedded</SelectItem>
-                <SelectItem value="robotics">Robotics</SelectItem>
+                <SelectItem value="masters-degree">Master&apos;s Degree</SelectItem>
+                <SelectItem value="cloud-computing">Cloud Computing</SelectItem>
                 <SelectItem value="web-development">Web Development</SelectItem>
-                <SelectItem value="ev-technology">EV Technology</SelectItem>
+                <SelectItem value="data-analytics">Data Analytics</SelectItem>
                 <SelectItem value="cloud-devops">Cloud & DevOps</SelectItem>
                 <SelectItem value="python">Python</SelectItem>
               </SelectContent>

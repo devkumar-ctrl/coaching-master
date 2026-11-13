@@ -65,7 +65,7 @@ export function Notification({
 
   return (
     <div className={cn(
-      "border rounded-lg p-4 shadow-sm transition-all duration-300 transform",
+      "border rounded-lg p-4 shadow-sm transition duration-fast transform",
       styleMap[type],
       isVisible ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
     )}>

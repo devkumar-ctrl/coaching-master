@@ -30,6 +30,7 @@ import {
   CheckCircle,
   XCircle,
   Plus,
+  BookPlus,
   Settings
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -97,6 +98,12 @@ export default function AdminUsersPage() {
     location: "",
     bio: ""
   });
+  const [showAssignDialog, setShowAssignDialog] = useState(false);
+  const [assignUser, setAssignUser] = useState<User | null>(null);
+  const [assignCourseIds, setAssignCourseIds] = useState<string[]>([]);
+  const [assignLoading, setAssignLoading] = useState(false);
+  const [courseOptions, setCourseOptions] = useState<{ id: string; title: string; price: number }[]>([]);
+  const [coursesLoading, setCoursesLoading] = useState(false);
 
   // Check if user is admin
   useEffect(() => {
@@ -149,6 +156,78 @@ export default function AdminUsersPage() {
       }
     } catch (error) {
       console.error('Error fetching user stats:', error);
+    }
+  };
+
+  const fetchCourseOptions = async () => {
+    try {
+      setCoursesLoading(true);
+      const response = await fetch('/api/admin/courses');
+      if (response.ok) {
+        const data = await response.json();
+        setCourseOptions(
+          (Array.isArray(data) ? data : [])
+            .filter((c: { isActive?: boolean }) => c.isActive !== false)
+            .map((c: { _id: string; title: string; price: number }) => ({
+              id: c._id,
+              title: c.title,
+              price: c.price,
+            }))
+        );
+      } else {
+        toast.error('Failed to load courses');
+      }
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+      toast.error('Failed to load courses');
+    } finally {
+      setCoursesLoading(false);
+    }
+  };
+
+  const openAssignDialog = (user: User) => {
+    setAssignUser(user);
+    setAssignCourseIds([]);
+    setShowAssignDialog(true);
+    if (courseOptions.length === 0) {
+      fetchCourseOptions();
+    }
+  };
+
+  const toggleAssignCourse = (courseId: string) => {
+    setAssignCourseIds((prev) =>
+      prev.includes(courseId) ? prev.filter((id) => id !== courseId) : [...prev, courseId]
+    );
+  };
+
+  const handleAssignCourses = async () => {
+    if (!assignUser) return;
+    if (assignCourseIds.length === 0) {
+      toast.error('Select at least one course');
+      return;
+    }
+    try {
+      setAssignLoading(true);
+      const response = await fetch('/api/admin/enrollments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: assignUser._id, courseIds: assignCourseIds }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data?.error || 'Failed to assign course');
+      toast.success(data.message || 'Course(s) assigned');
+      const skipped = Array.isArray(data.skipped) ? data.skipped : [];
+      if (skipped.length > 0) {
+        toast.info(`${skipped.length} course(s) skipped (already enrolled or unavailable)`);
+      }
+      setShowAssignDialog(false);
+      setAssignUser(null);
+      setAssignCourseIds([]);
+      fetchUsers();
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Failed to assign course');
+    } finally {
+      setAssignLoading(false);
     }
   };
 
@@ -463,6 +542,76 @@ export default function AdminUsersPage() {
         }
       />
 
+      {/* Assign Free Course Dialog */}
+      <Dialog
+        open={showAssignDialog}
+        onOpenChange={(open) => {
+          setShowAssignDialog(open);
+          if (!open) {
+            setAssignUser(null);
+            setAssignCourseIds([]);
+          }
+        }}
+      >
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Assign Free Course</DialogTitle>
+            <DialogDescription>
+              {assignUser
+                ? `Grant ${assignUser.name} free (₹0) access to one or more courses.`
+                : 'Grant a student free access to courses.'}
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-3">
+            <Label className="text-sm text-muted-foreground">Select courses</Label>
+            {coursesLoading ? (
+              <p className="text-sm text-muted-foreground py-6 text-center">Loading courses...</p>
+            ) : courseOptions.length === 0 ? (
+              <p className="text-sm text-muted-foreground py-6 text-center">No published courses available.</p>
+            ) : (
+              <div className="max-h-72 overflow-y-auto rounded-md border border-border divide-y divide-border">
+                {courseOptions.map((course) => (
+                  <label
+                    key={course.id}
+                    className="flex items-center gap-3 px-3 py-2.5 cursor-pointer hover:bg-muted/50 transition-colors"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={assignCourseIds.includes(course.id)}
+                      onChange={() => toggleAssignCourse(course.id)}
+                      className="h-4 w-4 rounded-xs accent-primary"
+                    />
+                    <span className="flex-1 text-sm text-foreground">{course.title}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {Number(course.price) > 0 ? `₹${course.price}` : 'Free'}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            )}
+            <p className="text-xs text-muted-foreground">
+              {assignCourseIds.length} course(s) selected. Already-enrolled courses are skipped.
+            </p>
+          </div>
+
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => {
+                setShowAssignDialog(false);
+                setAssignUser(null);
+                setAssignCourseIds([]);
+              }}
+            >
+              Cancel
+            </Button>
+            <Button onClick={handleAssignCourses} disabled={assignLoading || assignCourseIds.length === 0}>
+              {assignLoading ? 'Assigning...' : 'Assign for Free'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <Card>
@@ -714,7 +863,7 @@ export default function AdminUsersPage() {
                                 {selectedUser.bio && (
                                   <div>
                                     <h4 className="font-semibold mb-2">Bio</h4>
-                                    <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded">
+                                    <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-xs">
                                       {selectedUser.bio}
                                     </p>
                                   </div>
@@ -787,6 +936,18 @@ export default function AdminUsersPage() {
                             )}
                           </DialogContent>
                         </Dialog>
+
+                        {user.role === 'STUDENT' && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => openAssignDialog(user)}
+                            disabled={actionLoading}
+                          >
+                            <BookPlus className="h-4 w-4 mr-1" />
+                            Assign Course
+                          </Button>
+                        )}
 
                         <Dialog open={showEditDialog} onOpenChange={setShowEditDialog}>
                           <DialogTrigger asChild>
@@ -876,7 +1037,7 @@ export default function AdminUsersPage() {
                                     id="edit-verified"
                                     checked={editingUser.isVerified}
                                     onChange={(e) => setEditingUser({...editingUser, isVerified: e.target.checked})}
-                                    className="rounded"
+                                    className="rounded-xs"
                                   />
                                   <Label htmlFor="edit-verified">Verified Account</Label>
                                 </div>

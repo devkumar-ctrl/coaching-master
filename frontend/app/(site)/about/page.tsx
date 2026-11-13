@@ -19,10 +19,10 @@ import Image from "next/image";
 
 export default function AboutUs() {
   const stats = [
-    { icon: Users, label: "Students Trained", value: "5,000+", color: "text-blue-600" },
-    { icon: Award, label: "Placement Rate", value: "95%", color: "text-green-600" },
-    { icon: BookOpen, label: "Industry Projects", value: "50+", color: "text-purple-600" },
-    { icon: GraduationCap, label: "Partner Companies", value: "150+", color: "text-orange-600" }
+    { icon: Users, label: "Careers Transformed", value: "6000+", color: "text-blue-600" },
+    { icon: Award, label: "Skilled Learners", value: "24k+", color: "text-green-600" },
+    { icon: BookOpen, label: "Industry Projects", value: "500+", color: "text-purple-600" },
+    { icon: GraduationCap, label: "Community Members", value: "35,000+", color: "text-orange-600" }
   ];
 
   const values = [
@@ -50,11 +50,11 @@ export default function AboutUs() {
 
   const team = [
     {
-      name: "YuvaBot Lab",
-      position: "Founder & Director",
-      experience: "10+ Years in Technology Education",
+      name: "AlmaBetter",
+      position: "AI Education · Bengaluru",
+      experience: "Degrees, Certifications & Placements",
       image: "/yuva/yuva-logo.webp",
-      achievements: ["Innovation in Tech Education", "Author of STEM Curriculum", "Mentored 5,000+ Students"]
+      achievements: ["Partnerships: IIT Patna · NASSCOM · NSDC", "European HEA licensed degrees", "4.9/5 learning experience"]
     },
     
   ];
@@ -66,15 +66,15 @@ export default function AboutUs() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/30">
-              Established 2015
+              Made in Bengaluru, India
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              About YuvaBot Lab
+              About AlmaBetter
             </h1>
             <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed">
-              India's technology education and innovation company, 
-              committed to empowering students, institutions, and industries through practical 
-              training in IoT, Robotics, AI, Cyber Security and emerging technologies.
+              India's AI education company, headquartered in Bengaluru — 
+              committed to fast-forwarding careers through master&apos;s degrees, IIT Patna & 
+              NASSCOM certifications, and placement outcomes across 50+ high-growth AI roles.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" className="text-primary">
@@ -130,9 +130,9 @@ export default function AboutUs() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground leading-relaxed text-center">
-                    To deliver high-quality, practical, and affordable technical education 
-                    that bridges the gap between academic knowledge and real-world applications, 
-                    empowering the next generation of creators, engineers, and problem solvers.
+                    To deliver outcome-driven AI education that fast-forwards careers — 
+                    pairing a world-class curriculum with placement support, so every 
+                    learner lands a role they are proud of.
                   </p>
                 </CardContent>
               </Card>
@@ -146,9 +146,9 @@ export default function AboutUs() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground leading-relaxed text-center">
-                    To become a leading technology and innovation hub that nurtures 
-                    creators, engineers, and problem solvers through hands-on learning, 
-                    cutting-edge solutions, and exceptional industry outcomes.
+                    To become India&apos;s most trusted AI education platform, globally 
+                    recognised for outcomes — 6000+ careers transformed and counting, 
+                    powered by IIT Patna, NASSCOM and NSDC partnerships.
                   </p>
                 </CardContent>
               </Card>
@@ -192,7 +192,7 @@ export default function AboutUs() {
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Leadership Team</h2>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Meet the visionaries and experts who are driving YuvaBot Lab towards excellence.
+                Meet the visionaries and experts who are driving AlmaBetter towards excellence.
               </p>
             </div>
             
@@ -232,7 +232,7 @@ export default function AboutUs() {
               Ready to Build Your Future in Tech?
             </h2>
             <p className="text-xl text-primary-foreground/90 mb-8">
-              Join thousands of students who have transformed their careers with YuvaBot Lab.
+              Join thousands of students who have transformed their careers with AlmaBetter.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/courses">

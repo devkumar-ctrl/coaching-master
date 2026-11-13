@@ -22,32 +22,32 @@ import Link from "next/link";
 export default function CareerPage() {
   const openPositions = [
     {
-      title: "Senior Cyber Security Trainer",
+      title: "Senior Data Science & AI Trainer",
       type: "Full-time",
-      location: "Ranchi / Hybrid",
+      location: "Bengaluru / Hybrid",
       experience: "5+ years",
-      description: "Lead our Cyber Security training programs and mentor students with comprehensive practical knowledge and teaching expertise."
+      description: "Lead our Data Science and Agentic AI programs and mentor learners through hands-on industry projects."
     },
     {
-      title: "IoT & Embedded Systems Specialist",
+      title: "Full Stack & AI DevOps Instructor",
       type: "Full-time",
-      location: "Ranchi / Hybrid",
+      location: "Bengaluru / Hybrid",
       experience: "3+ years",
-      description: "Design and deliver IoT, hardware and embedded-systems curriculum, and lead engineering lab projects."
+      description: "Design and deliver full stack and AI DevOps curriculum, and lead Capstone project cohorts."
     },
     {
       title: "Content Development Manager",
       type: "Full-time",
-      location: "Ranchi / Hybrid",
+      location: "Bengaluru / Hybrid",
       experience: "4+ years",
-      description: "Oversee creation of course materials, projects, and digital content for all technology programs."
+      description: "Oversee creation of course materials, projects, and digital content for our degree and certification programs."
     },
     {
       title: "Student Counselor",
       type: "Full-time",
-      location: "Ranchi / Hybrid",
+      location: "Bengaluru / Hybrid",
       experience: "2+ years",
-      description: "Guide students through their technology journey, provide career counseling, and support their academic growth."
+      description: "Guide learners through course selection, counseling, and career outcomes support."
     }
   ];
 
@@ -278,21 +278,21 @@ export default function CareerPage() {
                   <Building className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-medium">HR Department</p>
-                    <p className="text-muted-foreground">9/A3 KrishnaPuri Road, Morabadi, Ranchi - 834008</p>
+                    <p className="text-muted-foreground">4th floor, 133/2, Janardhan Towers, Residency Road, Bengaluru - 560025</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-medium">Career Helpline</p>
-                    <p className="text-muted-foreground">+91 83403 07574</p>
+                    <p className="text-muted-foreground">+91 80460 08400</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-medium">Send Resume</p>
-                    <p className="text-muted-foreground">hr@YuvaBot.com</p>
+                    <p className="text-muted-foreground">admissions@almabetter.com</p>
                   </div>
                 </div>
               </div>

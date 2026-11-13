@@ -436,7 +436,7 @@ export default function AdminTestimonialsPage() {
                   id="visible"
                   checked={newTestimonial.isVisible}
                   onChange={(e) => setNewTestimonial({...newTestimonial, isVisible: e.target.checked})}
-                  className="rounded"
+                  className="rounded-xs"
                 />
                 <Label htmlFor="visible">Visible on website</Label>
               </div>
@@ -737,7 +737,7 @@ export default function AdminTestimonialsPage() {
                                     id="edit-visible"
                                     checked={editingTestimonial.isVisible}
                                     onChange={(e) => setEditingTestimonial({...editingTestimonial, isVisible: e.target.checked})}
-                                    className="rounded"
+                                    className="rounded-xs"
                                   />
                                   <Label htmlFor="edit-visible">Visible on website</Label>
                                 </div>

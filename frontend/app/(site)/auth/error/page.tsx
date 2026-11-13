@@ -45,8 +45,8 @@ function AuthErrorContent() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-6">
         <div className="text-center">
-          <img src="/yuva/yuva-logo.webp" alt="YuvaBot Lab" className="mx-auto h-12 w-auto" />
-          <h2 className="mt-4 text-2xl font-bold text-gray-900">YuvaBot Lab</h2>
+          <img src="/yuva/yuva-logo.webp" alt="AlmaBetter" className="mx-auto h-12 w-auto" />
+          <h2 className="mt-4 text-2xl font-bold text-gray-900">AlmaBetter</h2>
           <p className="text-sm text-gray-600">Innovate with Future Tech</p>
         </div>
 
@@ -104,7 +104,7 @@ function AuthErrorContent() {
                   <Button size="sm" variant="outline" onClick={handleRetry}>
                     Try Signing In Again
                   </Button>
-                  <Link href="mailto:info@YuvaBot.com">
+                  <Link href="mailto:info@almabetter.com">
                     <Button size="sm" variant="outline">
                       <Mail className="h-4 w-4 mr-1" />
                       Contact Support

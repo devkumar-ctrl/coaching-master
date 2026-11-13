@@ -45,3 +45,8 @@ next-env.d.ts
 
 # stray editor/agent scratch files
 opencode
+
+# editor/agent scratch
+.cursor/
+# large archives
+*.zip

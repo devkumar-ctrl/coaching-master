@@ -56,69 +56,69 @@ export default function NotesPage() {
       const mockNotes: Note[] = [
         {
           id: "1",
-          title: "Modern Indian History - Complete Notes",
-          subject: "History",
-          category: "prelims",
-          description: "Comprehensive notes covering the complete Cyber Security fundamentals syllabus",
+          title: "Data Science Foundations - Complete Notes",
+          subject: "Data Science",
+          category: "foundation",
+          description: "Comprehensive notes covering the complete Data Science fundamentals syllabus",
           downloadUrl: "/notes/modern-history.pdf",
           thumbnailUrl: "/thumbnails/history-notes.jpg",
           fileSize: "2.4 MB",
           downloadCount: 1250,
           rating: 4.8,
           uploadDate: "2025-01-15",
-          tags: ["Cyber Security", "Foundations", "Networking", "Threats"]
+          tags: ["Data Science", "Foundations", "Python", "EDA"]
         },
         {
           id: "2",
-          title: "Indian Geography - Physical Features",
-          subject: "Geography",
-          category: "prelims",
-          description: "Detailed notes on physical geography of India with maps and diagrams",
+          title: "React & Full Stack - Complete Notes",
+          subject: "Web Development",
+          category: "foundation",
+          description: "Detailed notes on React, state management, APIs and deployment with diagrams",
           downloadUrl: "/notes/geography-physical.pdf",
           fileSize: "3.1 MB",
           downloadCount: 980,
           rating: 4.7,
           uploadDate: "2025-01-12",
-          tags: ["Geography", "Physical", "Maps", "Diagrams"]
+          tags: ["Full Stack", "React", "JavaScript", "APIs"]
         },
         {
           id: "3",
-          title: "Indian Polity - Constitutional Framework",
-          subject: "Polity",
-          category: "prelims",
-          description: "Constitutional provisions, amendments, and important articles explained",
+          title: "Machine Learning - Model Deployment Guide",
+          subject: "Machine Learning",
+          category: "foundation",
+          description: "Serving models, monitoring, versioning and drift handling explained",
           downloadUrl: "/notes/polity-constitution.pdf",
           fileSize: "1.8 MB",
           downloadCount: 1450,
           rating: 4.9,
           uploadDate: "2025-01-10",
-          tags: ["Polity", "Constitution", "Amendments", "Articles"]
+          tags: ["Machine Learning", "Deployment", "MLOps", "Python"]
         },
         {
           id: "4",
-          title: "Economic Survey 2024 - Key Highlights",
-          subject: "Economics",
-          category: "current-affairs",
-          description: "Important points from the latest industry survey for tech careers",
+          title: "AI Industry Outlook 2026 - Key Highlights",
+          subject: "Career Services",
+          category: "advanced",
+          description: "Important points from the latest AI job market and salary report",
           downloadUrl: "/notes/economic-survey-2024.pdf",
           fileSize: "1.2 MB",
           downloadCount: 890,
           rating: 4.6,
           uploadDate: "2025-01-08",
-          tags: ["Economics", "Economic Survey", "Current Affairs", "2024"]
+          tags: ["AI Jobs", "Salary Report", "Career", "2026"]
         },
         {
           id: "5",
-          title: "Science & Technology - Recent Developments",
-          subject: "Science & Technology",
-          category: "current-affairs",
+          title: "Generative AI - Recent Developments",
+          subject: "Agentic AI",
+          category: "advanced",
           description: "Latest developments in AI and Machine Learning technologies",
           downloadUrl: "/notes/science-tech-recent.pdf",
           fileSize: "2.8 MB",
           downloadCount: 750,
           rating: 4.5,
           uploadDate: "2025-01-05",
-          tags: ["Science", "Technology", "Recent", "Developments"]
+          tags: ["Generative AI", "LLMs", "Agents", "Recent"]
         }
       ];
       
@@ -213,8 +213,8 @@ export default function NotesPage() {
         <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full md:w-auto">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="all">All Notes</TabsTrigger>
-            <TabsTrigger value="prelims">Foundation</TabsTrigger>
-            <TabsTrigger value="mains">Advanced</TabsTrigger>
+            <TabsTrigger value="foundation">Foundation</TabsTrigger>
+            <TabsTrigger value="advanced">Advanced</TabsTrigger>
           </TabsList>
         </Tabs>
       </div>

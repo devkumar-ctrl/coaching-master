@@ -27,7 +27,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              About YuvaBot Labs
+              About AlmaBetter
             </h1>
             <p className="text-xl sm:text-2xl text-primary-foreground/90 max-w-3xl mx-auto leading-relaxed">
               Empowering the next generation of engineers, creators, and problem solvers through practical, expert-led technology education
@@ -97,7 +97,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="font-semibold text-lg">Comprehensive Curriculum</h3>
                 <p className="text-muted-foreground">
-                  Hands-on, project-based curriculum in IoT, Robotics, AI and emerging technologies
+                  Hands-on, project-based curriculum in Data Science, AI, Full Stack and Cloud — co-designed with IIT Patna and NASSCOM
                 </p>
               </div>
 
@@ -107,7 +107,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="font-semibold text-lg">Proven Results</h3>
                 <p className="text-muted-foreground">
-                  Consistent track record of producing successful candidates across all services
+                  Consistent track record of producing successful candidates across all programs
                 </p>
               </div>
 
@@ -189,21 +189,21 @@ export default function AboutPage() {
                   <MapPin className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-medium">Visit Our Campus</p>
-                    <p className="text-muted-foreground">9/A3 KrishnaPuri Road, Morabadi, Ranchi - 834008</p>
+                    <p className="text-muted-foreground">4th floor, 133/2, Janardhan Towers, Residency Road, Bengaluru - 560025</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-medium">Call Us</p>
-                    <p className="text-muted-foreground">+91 83403 07574</p>
+                    <p className="text-muted-foreground">+91 80460 08400</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-medium">Email Us</p>
-                    <p className="text-muted-foreground">info@YuvaBot.com</p>
+                    <p className="text-muted-foreground">info@almabetter.com</p>
                   </div>
                 </div>
               </div>

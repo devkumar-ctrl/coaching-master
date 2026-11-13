@@ -39,7 +39,7 @@ export default function WhyChooseUs() {
     {
       icon: BookOpen,
       title: "Comprehensive Curriculum",
-      description: "Hands-on STEM curriculum with project-based learning and latest industry tools",
+      description: "Hands-on AI curriculum with project-based learning and latest industry tools",
       stats: "200+ Courses Available"
     },
     {
@@ -102,7 +102,7 @@ export default function WhyChooseUs() {
     {
       name: "Arjun Patel",
       rank: "Tech Pro Student, 2023",
-      text: "The structured approach and personal mentorship at YuvaBot Lab made all the difference in my preparation.",
+      text: "The structured approach and personal mentorship at AlmaBetter made all the difference in my preparation.",
       image: "/testimonials/arjun.jpg"
     },
     {
@@ -129,7 +129,7 @@ export default function WhyChooseUs() {
               #1 Technology Training Company
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Why Choose YuvaBot Lab?
+              Why Choose AlmaBetter?
             </h1>
             <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed">
               Discover what makes us the preferred choice for thousands of students and institutions. 
@@ -162,7 +162,7 @@ export default function WhyChooseUs() {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {reasons.map((reason, index) => (
-                <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
+                <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition hover:-translate-y-1">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0">
@@ -259,7 +259,7 @@ export default function WhyChooseUs() {
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Success Stories</h2>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Hear from our toppers who achieved their dreams with YuvaBot Lab.
+                Hear from our toppers who achieved their dreams with AlmaBetter.
               </p>
             </div>
             
@@ -293,7 +293,7 @@ export default function WhyChooseUs() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">The YuvaBot Lab Difference</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">The AlmaBetter Difference</h2>
               <p className="text-lg text-muted-foreground">
                 What makes us unique in the competitive world of technology education.
               </p>
@@ -372,7 +372,7 @@ export default function WhyChooseUs() {
               Ready to Experience the Difference?
             </h2>
             <p className="text-xl text-primary-foreground/90 mb-8">
-              Join thousands of successful students who chose YuvaBot Lab for their technology journey.
+              Join thousands of successful students who chose AlmaBetter for their technology journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/courses">

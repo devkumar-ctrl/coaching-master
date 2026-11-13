@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Only students can make payments' }, { status: 401 })
     }
 
-    const { amount, currency = 'INR', courseId, courseName } = await request.json()
+    const { amount, currency = 'INR', courseId, courseName, couponCode } = await request.json()
 
     if (!amount || !courseId) {
       return NextResponse.json(
@@ -76,8 +76,44 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verify amount matches course price
-    if (amount !== course.price) {
+    const originalAmount = Number(course.price) || 0
+    let discountAmount = 0
+    let discountPercent = 0
+    let appliedCoupon: string | null = null
+
+    if (couponCode) {
+      const { checkCoupon } = await import('@/lib/coupons')
+      const validation = await checkCoupon({
+        db,
+        code: couponCode,
+        courseId,
+        studentId: session.user.id,
+        coursePrice: originalAmount,
+      })
+      if (!validation.valid) {
+        return NextResponse.json(
+          { error: validation.error || 'Invalid coupon' },
+          { status: 400 }
+        )
+      }
+      if (validation.isFree) {
+        // Full 100% discount: no gateway order needed. The client should call
+        // /api/enrollments/free instead so we never charge.
+        return NextResponse.json(
+          { free: true, couponCode: validation.code, courseId },
+          { status: 200 }
+        )
+      }
+      discountAmount = validation.discountAmount
+      discountPercent = validation.discountPercent
+      appliedCoupon = validation.code ?? null
+    }
+
+    const payableAmount = appliedCoupon ? originalAmount - discountAmount : originalAmount
+
+    // Verify amount matches expected payable amount (course price, or
+    // price minus the coupon discount)
+    if (amount !== payableAmount) {
       return NextResponse.json(
         { error: 'Payment amount does not match course price' },
         { status: 400 }
@@ -85,13 +121,21 @@ export async function POST(request: NextRequest) {
     }
 
     const options = {
-      amount: amount * 100, // Razorpay expects amount in paise
+      amount: payableAmount * 100, // Razorpay expects amount in paise
       currency,
       receipt: generateReceiptId(courseId),
       notes: {
         courseId,
         courseName: course.title,
         coursePrice: course.price,
+        ...(appliedCoupon
+          ? {
+              couponCode: appliedCoupon,
+              discountAmount,
+              discountPercent,
+              payableAmount,
+            }
+          : {}),
         userId: session.user.id,
         userEmail: session.user.email,
         userName: session.user.name,
@@ -114,6 +158,14 @@ export async function POST(request: NextRequest) {
       status: 'created',
       courseTitle: course.title,
       teacherId: course.teacherId,
+      ...(appliedCoupon
+        ? {
+            couponCode: appliedCoupon,
+            originalAmount,
+            discountAmount,
+            discountPercent,
+          }
+        : {}),
       createdAt: new Date(),
       expiresAt: new Date(Date.now() + 15 * 60 * 1000) // 15 minutes expiry
     })
@@ -123,6 +175,15 @@ export async function POST(request: NextRequest) {
       amount: order.amount,
       currency: order.currency,
       key: process.env.RAZORPAY_KEY_ID,
+      ...(appliedCoupon
+        ? {
+            couponCode: appliedCoupon,
+            discountPercent,
+            discountAmount,
+            originalAmount,
+            payableAmount,
+          }
+        : {}),
       course: {
         id: course._id.toString(),
         title: course.title,
@@ -220,6 +281,15 @@ export async function PUT(request: NextRequest) {
       paymentId: razorpay_payment_id,
       orderId: razorpay_order_id,
       amountPaid: paymentIntent.amount,
+      ...(paymentIntent.couponCode
+        ? {
+            couponCode: paymentIntent.couponCode,
+            originalAmount: paymentIntent.originalAmount,
+            discountAmount: paymentIntent.discountAmount,
+            discountPercent: paymentIntent.discountPercent,
+            paymentMethod: 'razorpay',
+          }
+        : { paymentMethod: 'razorpay' }),
       enrolledAt: new Date(),
       status: 'active',
       progress: 0,
@@ -256,6 +326,15 @@ export async function PUT(request: NextRequest) {
       teacherId: course.teacherId,
       amount: paymentIntent.amount,
       currency: paymentIntent.currency,
+      ...(paymentIntent.couponCode
+        ? {
+            couponCode: paymentIntent.couponCode,
+            originalAmount: paymentIntent.originalAmount,
+            discountAmount: paymentIntent.discountAmount,
+            discountPercent: paymentIntent.discountPercent,
+            paymentMethod: 'razorpay',
+          }
+        : { paymentMethod: 'razorpay' }),
       status: 'completed',
       enrollmentId: enrollmentResult.insertedId.toString(),
       completedAt: new Date(),
@@ -273,6 +352,29 @@ export async function PUT(request: NextRequest) {
         }
       }
     )
+
+    // Mark the coupon as used (discounted, non-free orders)
+    if (paymentIntent.couponCode) {
+      try {
+        await db.collection('coupons').updateOne(
+          { code: paymentIntent.couponCode },
+          {
+            $inc: { usedCount: 1 },
+            $push: {
+              usedBy: {
+                studentId: session.user.id,
+                studentEmail: session.user.email ?? null,
+                enrollmentId: enrollmentResult.insertedId.toString(),
+                usedAt: new Date(),
+              },
+            } as any,
+            $set: { updatedAt: new Date() },
+          }
+        )
+      } catch (couponError) {
+        console.error('Failed to record coupon usage:', couponError)
+      }
+    }
 
     // Send enrollment confirmation email
     try {

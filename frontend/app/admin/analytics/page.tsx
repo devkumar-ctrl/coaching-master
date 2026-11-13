@@ -472,7 +472,7 @@ export default function AdminAnalyticsPage() {
               <CardContent>
                 <div className="space-y-3">
                   {analytics?.courseMetrics.coursePerformance?.slice(0, 5).map((course, index) => (
-                    <div key={index} className="p-3 bg-muted/50 rounded">
+                    <div key={index} className="p-3 bg-muted/50 rounded-xs">
                       <h4 className="font-medium text-sm">{course.title}</h4>
                       <div className="flex items-center justify-between mt-1">
                         <span className="text-xs text-muted-foreground">
@@ -542,7 +542,7 @@ export default function AdminAnalyticsPage() {
             <CardContent>
               <div className="space-y-3">
                 {analytics?.revenueMetrics.topEarningTeachers?.slice(0, 5).map((teacher, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-muted/50 rounded">
+                  <div key={index} className="flex items-center justify-between p-3 bg-muted/50 rounded-xs">
                     <div>
                       <h4 className="font-medium">{teacher.name}</h4>
                       <p className="text-sm text-muted-foreground">{teacher.courses} courses</p>

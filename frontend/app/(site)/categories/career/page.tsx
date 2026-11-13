@@ -25,11 +25,11 @@ import Link from "next/link";
 export default function CareerDevelopment() {
   const careerPaths = [
     {
-      title: "Cyber Security Analyst",
-      description: "Protect organisations from threats as a certified security professional",
+      title: "AI Engineer",
+      description: "Build and ship production AI systems as a certified AI professional",
       duration: "6-8 months training",
       opportunities: "100K+ openings in India",
-      skills: ["Ethical Hacking", "Network Security", "Risk Assessment", "Incident Response"],
+      skills: ["Prompt Engineering", "LLM APIs", "Model Evaluation", "AI Agents"],
       icon: Building,
       color: "bg-blue-500"
     },
@@ -52,11 +52,11 @@ export default function CareerDevelopment() {
       color: "bg-orange-500"
     },
     {
-      title: "IoT & Embedded Engineer",
-      description: "Create connected devices and intelligent hardware systems",
+      title: "DevOps & Cloud Engineer",
+      description: "Build reliable cloud infrastructure and AI deployment pipelines",
       duration: "6-8 months training",
       opportunities: "120K+ openings in India",
-      skills: ["Embedded C", "Circuit Design", "Sensors", "Cloud Integration"],
+      skills: ["Docker & Kubernetes", "AWS", "CI/CD", "Terraform"],
       icon: GraduationCap,
       color: "bg-purple-500"
     }
@@ -76,13 +76,13 @@ export default function CareerDevelopment() {
       icon: Users
     },
     {
-      title: "Industrial Automation",
-      description: "Understand automation systems and smart-industry solutions",
+      title: "AI Projects Studio",
+      description: "Build portfolio-grade AI projects with expert review",
       modules: [
-        "PLC & SCADA Basics",
-        "IoT Dashboard Design",
-        "Robotics Fundamentals",
-        "Manufacturing Systems"
+        "AI Project Sprints",
+        "Capstone Portfolio",
+        "Code Reviews",
+        "Industry Mentors"
       ],
       duration: "4 months", 
       icon: FileText
@@ -116,10 +116,10 @@ export default function CareerDevelopment() {
   const mentors = [
     {
       name: "Arjun Verma",
-      designation: "Cyber Security Consultant",
-      experience: "12+ years in InfoSec",
-      specialization: "Ethical Hacking & VAPT",
-      achievements: ["CEH & OSCP Certified", "Led 200+ security audits", "Award for Excellence"]
+      designation: "AI Solutions Consultant",
+      experience: "12+ years in Tech",
+      specialization: "LLM Apps & Agents",
+      achievements: ["Certified AI Engineer", "Shipped 50+ AI features", "Award for Excellence"]
     },
     {
       name: "Kavya Reddy", 
@@ -140,18 +140,18 @@ export default function CareerDevelopment() {
   const successStories = [
     {
       name: "Aadhya Singh",
-      achievement: "Cyber Security Analyst, Bengaluru",
+      achievement: "AI Engineer, Bengaluru",
       year: "2023",
       rank: "Offered ₹8.5 LPA",
-      story: "From a small town to a top security team, YuvaBot Lab helped me realize my dream of a tech career.",
-      currentRole: "Security Analyst, TCS"
+      story: "From a small town to a top AI team, AlmaBetter helped me realize my dream of a tech career.",
+      currentRole: "AI Engineer, TCS"
     },
     {
       name: "Rohit Sharma",
       achievement: "Full Stack Developer, Pune", 
       year: "2023",
       rank: "Offered ₹7 LPA", 
-      story: "The hands-on training and mentorship at YuvaBot Lab prepared me not just for the interview but for real-world challenges.",
+      story: "The hands-on training and mentorship at AlmaBetter prepared me not just for the interview but for real-world challenges.",
       currentRole: "Software Engineer, Infosys"
     },
     {
@@ -171,14 +171,14 @@ export default function CareerDevelopment() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/30">
-              Career Excellence Program
+              Career Outcomes Program
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Career Development & Growth
             </h1>
             <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed">
               Shape your future with our comprehensive career development programs. 
-              Build the skills, knowledge, and confidence needed for success in public service.
+              Build the skills, knowledge, and confidence needed for success in AI and tech.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" className="text-primary">
@@ -207,7 +207,7 @@ export default function CareerDevelopment() {
             
             <div className="grid md:grid-cols-2 gap-8">
               {careerPaths.map((path, index) => (
-                <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
+                <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition hover:-translate-y-1">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className={`flex-shrink-0 w-12 h-12 ${path.color} rounded-full flex items-center justify-center`}>
@@ -415,7 +415,7 @@ export default function CareerDevelopment() {
               Ready to Accelerate Your Career?
             </h2>
             <p className="text-xl text-primary-foreground/90 mb-8">
-              Join our career development programs and take the next step towards your dream career in public service.
+              Join our career development programs and take the next step towards your dream career in AI.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/courses">

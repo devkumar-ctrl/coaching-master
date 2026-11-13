@@ -521,7 +521,7 @@ export default function EditCourse() {
                         id="title"
                         value={courseForm.title}
                         onChange={(e) => setCourseForm(prev => ({ ...prev, title: e.target.value }))}
-                        placeholder="e.g., Cyber Security: Zero to Hero"
+                        placeholder="e.g., Data Science and Agentic AI: Zero to Hero"
                         required
                       />
                     </div>
@@ -615,14 +615,14 @@ export default function EditCourse() {
                             <SelectValue placeholder="Select category" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="cyber-security">Cyber Security</SelectItem>
-                            <SelectItem value="ethical-hacking">Ethical Hacking</SelectItem>
+                            <SelectItem value="agentic-ai">Agentic AI</SelectItem>
+                            <SelectItem value="software-development">Software Development</SelectItem>
                             <SelectItem value="ai-ml">AI & Machine Learning</SelectItem>
                             <SelectItem value="data-science">Data Science</SelectItem>
-                            <SelectItem value="iot-embedded">IoT & Embedded</SelectItem>
-                            <SelectItem value="robotics">Robotics</SelectItem>
+                            <SelectItem value="masters-degree">Master&apos;s Degree</SelectItem>
+                            <SelectItem value="cloud-computing">Cloud Computing</SelectItem>
                             <SelectItem value="web-development">Web Development</SelectItem>
-                            <SelectItem value="ev-technology">EV Technology</SelectItem>
+                            <SelectItem value="data-analytics">Data Analytics</SelectItem>
                             <SelectItem value="cloud-devops">Cloud & DevOps</SelectItem>
                             <SelectItem value="python">Python</SelectItem>
                           </SelectContent>
@@ -878,7 +878,7 @@ export default function EditCourse() {
                                     </div>
                                   ) : (
                                     <div 
-                                      className="cursor-pointer hover:bg-muted/50 p-1 rounded min-h-[32px] flex items-center"
+                                      className="cursor-pointer hover:bg-muted/50 p-1 rounded-xs min-h-[32px] flex items-center"
                                       onClick={() => startEditing(row.id, col.id)}
                                     >
                                       {row[col.id] || 'Click to edit'}
@@ -995,7 +995,7 @@ export default function EditCourse() {
                       <div className="flex gap-2">
                         <Input
                           id="tag-input"
-                          placeholder="Add tags (e.g., History, Geography)"
+                          placeholder="Add tags (e.g., Data Science, Full Stack)"
                           onKeyPress={(e) => {
                             if (e.key === 'Enter') {
                               e.preventDefault();

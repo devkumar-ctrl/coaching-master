@@ -53,7 +53,7 @@ export default function DailyMeeting({ roomUrl, roomId, userName = "Participant"
       activeSpeakerMode: true,
       theme: {
         colors: {
-          accent: '#3B82F6',
+          accent: '#E60035',
           accentText: '#FFFFFF',
           background: '#FFFFFF',
           backgroundAccent: '#F8FAFC',
@@ -284,7 +284,7 @@ export default function DailyMeeting({ roomUrl, roomId, userName = "Participant"
           
           <div className="flex items-center gap-2">
             <span>Share meeting: </span>
-            <code className="bg-gray-100 px-2 py-1 rounded text-xs">
+            <code className="bg-gray-100 px-2 py-1 rounded-xs text-xs">
               /meetings/join/{roomId}
             </code>
           </div>

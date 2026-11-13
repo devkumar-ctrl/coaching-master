@@ -242,7 +242,7 @@ export default function CustomWebRTCMeeting({ roomId }: { roomId: string }) {
                     <VideoOff className="h-12 w-12 text-gray-400" />
                   </div>
                 )}
-                <div className="absolute top-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
+                <div className="absolute top-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded-xs text-xs">
                   Preview
                 </div>
               </div>
@@ -301,7 +301,7 @@ export default function CustomWebRTCMeeting({ roomId }: { roomId: string }) {
                 <p>• Click the button above to start your meeting</p>
                 <p>• Allow camera and microphone access when prompted</p>
                 <p>• Share the meeting link with others to join</p>
-                <p>• Meeting ID: <code className="bg-gray-100 px-1 rounded">{roomId}</code></p>
+                <p>• Meeting ID: <code className="bg-gray-100 px-1 rounded-xs">{roomId}</code></p>
               </div>
             </div>
           </CardContent>
@@ -373,7 +373,7 @@ export default function CustomWebRTCMeeting({ roomId }: { roomId: string }) {
             </div>
             
             {/* Status indicator */}
-            <div className="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 rounded text-xs">
+            <div className="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 rounded-xs text-xs">
               ● LIVE
             </div>
           </div>

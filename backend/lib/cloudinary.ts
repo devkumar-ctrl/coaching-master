@@ -125,9 +125,45 @@ export async function uploadImage(file: File | string, folder: string = 'courses
   }
 }
 
+// Helper function to upload a video lesson (no image transformation applied).
+export async function uploadVideo(
+  file: File,
+  folder: string = 'lessons'
+): Promise<{ url: string; publicId: string; duration: number }> {
+  if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+    throw new Error('Cloudinary configuration is incomplete. Please check environment variables.');
+  }
+
+  const base64 = await fileToBase64(file);
+  const uploadResult = await cloudinary.uploader.upload(base64, {
+    folder: `coaching/${folder}`,
+    resource_type: 'video',
+    eager: [{ streaming_profile: 'hd', format: 'm3u8' }],
+    eager_async: true,
+  });
+
+  return {
+    url: uploadResult.secure_url,
+    publicId: uploadResult.public_id,
+    duration: Math.round(uploadResult.duration || 0),
+  };
+}
+
+// Helper function to upload a recording from a remote (Daily.co) URL.
+export async function uploadVideoFromUrl(url: string, folder: string = 'lessons') {
+  const uploadResult = await cloudinary.uploader.upload(url, {
+    folder: `coaching/${folder}`,
+    resource_type: 'video',
+  });
+  return {
+    url: uploadResult.secure_url,
+    publicId: uploadResult.public_id,
+    duration: Math.round(uploadResult.duration || 0),
+  };
+}
+
 // Helper function to delete image
-export async function deleteImage(publicId: string): Promise<void> {
-  try {
+export async function deleteImage(publicId: string): Promise<void> {  try {
     console.log('🗑️ Attempting to delete image with publicId:', publicId);
     const result = await cloudinary.uploader.destroy(publicId);
     console.log('✅ Image deletion result:', result);

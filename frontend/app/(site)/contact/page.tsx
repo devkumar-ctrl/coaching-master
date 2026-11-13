@@ -26,19 +26,19 @@ export default function Contact() {
     {
       icon: Phone,
       title: "Phone / WhatsApp",
-      details: ["+91 83403 07574"],
+      details: ["+91 80460 08400"],
       description: "Mon-Fri, 9 AM - 6 PM · Sat 9 AM - 2 PM"
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["hr@YuvaBot.com", "info@YuvaBot.com"],
+      details: ["admissions@almabetter.com", "info@almabetter.com"],
       description: "We'll respond within 24 hours"
     },
     {
       icon: MapPin,
       title: "Headquarters",
-      details: ["9/A3 KrishnaPuri Road", "Morabadi, Ranchi, Jharkhand 834008"],
+      details: ["4th floor, 133/2, Janardhan Towers, Residency Road", "Bengaluru, Karnataka 560025"],
       description: "Visit our campus"
     },
     {
@@ -51,34 +51,34 @@ export default function Contact() {
 
   const offices = [
     {
-      city: "Ranchi",
-      address: "9/A3 KrishnaPuri Road, Morabadi, Ranchi - 834008",
-      phone: "+91 83403 07574",
-      email: "hr@YuvaBot.com",
+      city: "Bengaluru",
+      address: "4th floor, 133/2, Janardhan Towers, Residency Road, Bengaluru - 560025",
+      phone: "+91 80460 08400",
+      email: "admissions@almabetter.com",
       type: "Head Office"
     }
   ];
 
   const departments = [
     {
-      name: "Training & Education",
-      email: "hr@YuvaBot.com",
-      description: "LazySkool skill programs, enrollment and training queries"
+      name: "Admissions & Courses",
+      email: "admissions@almabetter.com",
+      description: "Course selection, enrollment and scholarship queries"
     },
     {
-      name: "Industrial Solutions",
-      email: "hr@YuvaBot.com",
-      description: "IoT, automation, hardware and software solution requests"
+      name: "Learner Support",
+      email: "info@almabetter.com",
+      description: "Technical support, accounts and platform help"
     },
     {
       name: "Career Services",
-      email: "hr@YuvaBot.com",
-      description: "Placement assistance and campus drives"
+      email: "admissions@almabetter.com",
+      description: "Placement assistance and hiring partner queries"
     },
     {
-      name: "Cyber Security",
-      email: "hr@YuvaBot.com",
-      description: "Security audits, VAPT and network security services"
+      name: "Hire From Us",
+      email: "admissions@almabetter.com",
+      description: "Hiring our learners and alumni"
     }
   ];
 
@@ -326,7 +326,7 @@ export default function Contact() {
                     { icon: Linkedin, name: "LinkedIn", followers: "10K+" },
                     { icon: Globe, name: "Website", followers: "Visit" }
                   ].map((social, index) => (
-                    <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer">
+                    <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition hover:-translate-y-1 cursor-pointer">
                       <CardContent className="p-4 text-center">
                         <social.icon className="h-8 w-8 text-primary mx-auto mb-2" />
                         <h4 className="text-sm font-semibold text-foreground">{social.name}</h4>

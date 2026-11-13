@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SessionProvider } from "next-auth/react";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -16,15 +11,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "YuvaBot Lab - Technology Education, Industrial Solutions & Career Development",
-  description: "Empowering innovation through technology. Hands-on training in IoT, Embedded Systems, Robotics, AI, Cyber Security and skill-based programs with placement support.",
-  keywords: ["YuvaBot", "LazySkool", "IoT", "embedded systems", "robotics", "AI", "machine learning", "cyber security", "data science", "STEM education", "technical training", "placement", "career"],
-  authors: [{ name: "YuvaBot Lab Pvt. Ltd." }],
+  title: "AlmaBetter - Fast Forward Your Career in AI",
+  description: "World-class AI education. MS in Computer Science degrees, IIT Patna & NASSCOM certifications, and 6000+ careers transformed with 5-40 LPA placements.",
+  keywords: ["AlmaBetter", "AI", "data science", "machine learning", "full stack development", "agentic AI", "MS in Computer Science", "professional certification", "technical training", "placement", "career"],
+  authors: [{ name: "AlmaBetter Edutech Private Limited" }],
   openGraph: {
-    title: "YuvaBot Lab - Innovate with Future Tech",
-    description: "Technology education, industrial solutions and career development. Training programs in IoT, Robotics, AI, Cyber Security and more.",
+    title: "AlmaBetter - Fast Forward Your Career in AI",
+    description: "Degree programs, professional certifications and career outcomes in AI — 6000+ careers transformed.",
     type: "website",
-    url: "https://yuvabot.com",
+    url: "https://www.almabetter.com",
   },
   icons: {
     icon: "/yuva/yuva-favicon.webp",
@@ -39,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <ThemeProvider
           attribute="class"

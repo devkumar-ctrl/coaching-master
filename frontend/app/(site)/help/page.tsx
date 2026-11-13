@@ -152,7 +152,7 @@ export default function HelpCenter() {
       icon: Mail,
       title: "Email Support",
       description: "Send us an email and we'll respond within 24 hours",
-      availability: "info@YuvaBot.com",
+      availability: "info@almabetter.com",
       action: "Send Email",
       color: "bg-blue-500"
     },
@@ -213,7 +213,7 @@ export default function HelpCenter() {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {helpTopics.map((topic, index) => (
-                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer">
+                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition hover:-translate-y-1 cursor-pointer">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className={`flex-shrink-0 w-12 h-12 ${topic.color} rounded-full flex items-center justify-center`}>
@@ -378,7 +378,7 @@ export default function HelpCenter() {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Link href="/courses" className="group">
-                <Card className="border-0 shadow-lg hover:shadow-xl transition-all group-hover:-translate-y-1">
+                <Card className="border-0 shadow-lg hover:shadow-xl transition group-hover:-translate-y-1">
                   <CardContent className="p-6 text-center">
                     <BookOpen className="h-8 w-8 text-primary mx-auto mb-3" />
                     <h3 className="font-semibold text-foreground mb-2">Course Catalog</h3>
@@ -390,7 +390,7 @@ export default function HelpCenter() {
              
               
               <Link href="/contact" className="group">
-                <Card className="border-0 shadow-lg hover:shadow-xl transition-all group-hover:-translate-y-1">
+                <Card className="border-0 shadow-lg hover:shadow-xl transition group-hover:-translate-y-1">
                   <CardContent className="p-6 text-center">
                     <Phone className="h-8 w-8 text-primary mx-auto mb-3" />
                     <h3 className="font-semibold text-foreground mb-2">Contact Us</h3>
@@ -400,11 +400,11 @@ export default function HelpCenter() {
               </Link>
               
               <Link href="/about" className="group">
-                <Card className="border-0 shadow-lg hover:shadow-xl transition-all group-hover:-translate-y-1">
+                <Card className="border-0 shadow-lg hover:shadow-xl transition group-hover:-translate-y-1">
                   <CardContent className="p-6 text-center">
                     <Users className="h-8 w-8 text-primary mx-auto mb-3" />
                     <h3 className="font-semibold text-foreground mb-2">About Us</h3>
-                    <p className="text-sm text-muted-foreground">Learn more about YuvaBot Lab</p>
+                    <p className="text-sm text-muted-foreground">Learn more about AlmaBetter</p>
                   </CardContent>
                 </Card>
               </Link>

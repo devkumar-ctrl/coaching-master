@@ -123,7 +123,7 @@ export default function Pricing() {
     {
       name: "Priya Sharma",
       rank: "Tech Pro Graduate, 2023",
-      text: "YuvaBot Lab provided me with the perfect blend of comprehensive content and personalized guidance.",
+      text: "AlmaBetter provided me with the perfect blend of comprehensive content and personalized guidance.",
       plan: "Premium Plan"
     },
     {
@@ -183,7 +183,7 @@ export default function Pricing() {
             
             <div className="grid lg:grid-cols-3 gap-8">
               {plans.map((plan, index) => (
-                <Card key={index} className={`relative border-0 shadow-xl hover:shadow-2xl transition-all ${
+                <Card key={index} className={`relative border-0 shadow-xl hover:shadow-2xl transition ${
                   plan.name === 'Advanced' ? 'lg:scale-105 lg:-mt-4' : ''
                 }`}>
                   {plan.badge && (

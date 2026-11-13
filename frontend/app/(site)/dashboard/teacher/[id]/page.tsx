@@ -259,7 +259,7 @@ export default function TeacherDashboard() {
         
         <div className="flex flex-wrap gap-2 lg:gap-3">
           <Link href={`/dashboard/teacher/create-course`}>
-            <Button className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all hover:scale-105">
+            <Button className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition hover:scale-105">
               <Plus className="h-4 w-4 mr-2" />
               Create Course
             </Button>
@@ -321,7 +321,7 @@ export default function TeacherDashboard() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <Link href={`/dashboard/teacher/create-course`} className="block">
-                  <Button variant="outline" className="w-full justify-start hover:bg-accent transition-all">
+                  <Button variant="outline" className="w-full justify-start hover:bg-accent transition">
                     <Plus className="h-4 w-4 mr-3" />
                     Create New Course
                   </Button>
@@ -329,7 +329,7 @@ export default function TeacherDashboard() {
               </CardContent>
                <CardContent className="space-y-3">
                 <Link href={`/dashboard/teacher/${teacherId}/meetings`} className="block">
-                  <Button variant="outline" className="w-full justify-start hover:bg-accent transition-all">
+                  <Button variant="outline" className="w-full justify-start hover:bg-accent transition">
                     <Plus className="h-4 w-4 mr-3" />
                     Publish Class Link 
                   </Button>
@@ -337,7 +337,7 @@ export default function TeacherDashboard() {
               </CardContent>
                <CardContent className="space-y-3">
                 <Link href={`/dashboard/teacher/${teacherId}/marketing`} className="block">
-                  <Button variant="outline" className="w-full justify-start hover:bg-accent transition-all">
+                  <Button variant="outline" className="w-full justify-start hover:bg-accent transition">
                     <Plus className="h-4 w-4 mr-3" />
                     Premium Email Marketing
                   </Button>
@@ -345,7 +345,7 @@ export default function TeacherDashboard() {
               </CardContent>
               <CardContent className="space-y-3">
                 <Link href={`/dashboard/teacher/courses`} className="block">
-                  <Button variant="outline" className="w-full justify-start hover:bg-accent transition-all">
+                  <Button variant="outline" className="w-full justify-start hover:bg-accent transition">
                     <Plus className="h-4 w-4 mr-3" />
                     Manage courses 
                   </Button>
@@ -432,7 +432,7 @@ export default function TeacherDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {courses.length > 0 ? (
               courses.map((course) => (
-                <Card key={course.id} className="border-0 shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] group">
+                <Card key={course.id} className="border-0 shadow-lg hover:shadow-xl transition hover:scale-[1.02] group">
                   <CardContent className="p-0">
                     <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/20 rounded-t-xl flex items-center justify-center">
                       {course.image ? (
@@ -510,7 +510,7 @@ export default function TeacherDashboard() {
 
           <div className="flex justify-center">
             <Link href={`${teacherId}/courses`}>
-              <Button variant="outline" className="hover:bg-accent transition-all">
+              <Button variant="outline" className="hover:bg-accent transition">
                 View All Courses
                 <ChevronRight className="h-4 w-4 ml-2" />
               </Button>
@@ -569,7 +569,7 @@ export default function TeacherDashboard() {
       <div className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 z-50">
         <div className="flex flex-col gap-2">
           <Link href={`${teacherId}/meetings`}>
-            <Button size="lg" className="rounded-full shadow-lg hover:scale-110 transition-all bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800">
+            <Button size="lg" className="rounded-full shadow-lg hover:scale-110 transition bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800">
               <Video className="h-5 w-5 mr-2" />
               Publish class link
             </Button>

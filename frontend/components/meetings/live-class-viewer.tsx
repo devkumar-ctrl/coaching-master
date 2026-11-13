@@ -269,7 +269,7 @@ export default function LiveClassViewer({ studentId, enrolledCourses = [] }: Liv
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
                       <div 
-                        className="bg-red-500 h-2 rounded-full transition-all duration-1000"
+                        className="bg-red-500 h-2 rounded-full transition duration-normal"
                         style={{
                           width: `${Math.min(
                             100,

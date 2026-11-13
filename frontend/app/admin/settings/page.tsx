@@ -143,7 +143,7 @@ export default function AdminSettingsPage() {
       <Card className="border-0 shadow-lg">
         <CardHeader>
           <div className="flex items-center gap-3">
-            <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-red-600 to-pink-600 text-white shadow">
+            <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-r from-red-600 to-pink-600 text-white shadow">
               <KeyRound className="h-5 w-5" />
             </div>
             <div>
@@ -230,7 +230,7 @@ export default function AdminSettingsPage() {
       <Card className="mt-8 border-0 shadow-lg">
         <CardHeader>
           <div className="flex items-center gap-3">
-            <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-red-600 to-pink-600 text-white shadow">
+            <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-r from-red-600 to-pink-600 text-white shadow">
               <ShieldQuestion className="h-5 w-5" />
             </div>
             <div>

@@ -78,7 +78,7 @@ export default function SafetyGuidelines() {
         "Log out from shared or public computers after use",
         "Report any suspicious activity or unauthorized access immediately",
         "Update your browser regularly for optimal security",
-        "Be cautious of phishing emails claiming to be from YuvaBot Lab"
+        "Be cautious of phishing emails claiming to be from AlmaBetter"
       ]
     },
     {
@@ -145,19 +145,19 @@ export default function SafetyGuidelines() {
   const emergencyContacts = [
     {
       type: "Safety Concerns",
-      contact: "safety@yuvabot.com",
+      contact: "info@almabetter.com",
       phone: "+91 98765 43214",
       availability: "24/7"
     },
     {
       type: "Technical Security",
-      contact: "security@yuvabot.com", 
+      contact: "info@almabetter.com", 
       phone: "+91 98765 43215",
       availability: "24/7"
     },
     {
       type: "Student Support",
-      contact: "info@YuvaBot.com",
+      contact: "info@almabetter.com",
       phone: "+91 98765 43216",
       availability: "9 AM - 9 PM"
     }
@@ -206,7 +206,7 @@ export default function SafetyGuidelines() {
             
             <div className="grid md:grid-cols-2 gap-8">
               {safetyPrinciples.map((principle, index) => (
-                <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all">
+                <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0">

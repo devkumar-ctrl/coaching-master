@@ -9,7 +9,7 @@ export default function SignIn() {
   return (
     <Button 
       onClick={() => router.push("/auth/signin")} 
-      className="flex rounded-2xl items-center space-x-2"
+      className="flex rounded-lg items-center space-x-2"
     >
       Sign In
     </Button>

@@ -27,6 +27,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   // Required when self-hosted (custom domain / non-Vercel)
   trustHost: true,
 
+  // Share the session cookie across subdomains (e.g. lms.example.com) so a
+  // learner signed in on the main site is already authenticated on the LMS
+  // subdomain. Set AUTH_COOKIE_DOMAIN=".example.com" in production; leave it
+  // unset for localhost, where cross-subdomain cookies are not needed.
+  ...(process.env.AUTH_COOKIE_DOMAIN
+    ? {
+        cookies: {
+          sessionToken: {
+            name:
+              process.env.NODE_ENV === "production"
+                ? "__Secure-authjs.session-token"
+                : "authjs.session-token",
+            options: {
+              domain: process.env.AUTH_COOKIE_DOMAIN,
+              path: "/",
+              httpOnly: true,
+              sameSite: "lax" as const,
+              secure: process.env.NODE_ENV === "production",
+            },
+          },
+        },
+      }
+    : {}),
+
   pages: {
     signIn: "/auth/signin",
     error: "/auth/error",

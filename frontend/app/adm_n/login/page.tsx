@@ -164,7 +164,7 @@ export default function AdminLoginPage() {
     <div className="flex min-h-dvh items-center justify-center bg-gradient-to-br from-red-600/15 via-background to-pink-600/15 px-4 py-10">
       <Card className="w-full max-w-md border-0 shadow-2xl">
         <CardHeader className="text-center">
-          <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-red-600 to-pink-600 shadow-lg">
+          <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-gradient-to-br from-red-600 to-pink-600 shadow-lg">
             <span className="text-lg font-black text-white">YB</span>
           </div>
           <CardTitle className="text-2xl font-bold">Admin Console</CardTitle>

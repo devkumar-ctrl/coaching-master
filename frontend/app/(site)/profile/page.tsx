@@ -87,12 +87,12 @@ export default function ProfilePage() {
         phone: "+91 9876543210",
         image: session?.user?.image || "/avatars/john-doe.jpg",
         role: "STUDENT",
-        bio: "Aspiring software engineer skilled in Python and IoT. Passionate about building tech that makes a difference.",
+        bio: "Aspiring AI engineer skilled in Python and data science. Passionate about building systems that make a difference.",
         location: "New Delhi, India",
         dateOfBirth: "1995-06-15",
         joinedDate: "2023-08-15",
         preferences: {
-          subjects: ["History", "Geography", "Polity", "Economics", "Current Affairs"],
+          subjects: ["Data Science", "Full Stack", "Agentic AI", "Machine Learning", "Career Services"],
           studyGoals: ["Master Python", "Build 10+ Projects", "Crack Frontend Role"],
           notificationSettings: {
             email: true,
@@ -109,19 +109,19 @@ export default function ProfilePage() {
         enrolledCourses: [
           {
             id: "1",
-            title: "Cyber Security: Zero to Hero",
+            title: "Data Science and Agentic AI: Zero to Hero",
             progress: 65,
             instructor: "Dr. Rajesh Kumar"
           },
           {
             id: "2",
-            title: "Indian History Complete Course",
+            title: "Full Stack Development with AI: Zero to Hero",
             progress: 80,
             instructor: "Prof. Sunita Sharma"
           },
           {
             id: "3",
-            title: "Current Affairs Monthly Package",
+            title: "Agentic AI Monthly Workshop Series",
             progress: 40,
             instructor: "Editorial Team"
           }

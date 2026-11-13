@@ -193,7 +193,7 @@ export default function TeacherCoursesPage() {
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 bg-gradient-to-r from-amber-500 to-orange-500 dark:from-purple-600 dark:to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-10 h-10 bg-gradient-to-r from-amber-500 to-orange-500 dark:from-purple-600 dark:to-indigo-600 rounded-lg flex items-center justify-center shadow-lg">
                   <BookOpen className="h-5 w-5 text-white" />
                 </div>
                 <div>
@@ -225,7 +225,7 @@ export default function TeacherCoursesPage() {
                   <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Courses</p>
                   <p className="text-3xl font-bold text-gray-900 dark:text-gray-100">{stats.total}</p>
                 </div>
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
                   <BookOpen className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -239,7 +239,7 @@ export default function TeacherCoursesPage() {
                   <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Students</p>
                   <p className="text-3xl font-bold text-gray-900 dark:text-gray-100">{stats.totalStudents}</p>
                 </div>
-                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
                   <Users className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -255,7 +255,7 @@ export default function TeacherCoursesPage() {
                     ₹{stats.totalRevenue.toLocaleString()}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
                   <DollarSign className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -271,7 +271,7 @@ export default function TeacherCoursesPage() {
                     {stats.averageRating.toFixed(1)}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center">
                   <Star className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -290,7 +290,7 @@ export default function TeacherCoursesPage() {
                   placeholder="Search courses..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 border-2 border-gray-200 dark:border-gray-600 focus:border-amber-500 dark:focus:border-purple-500"
+                  className="pl-10 border-2 border-gray-200 dark:border-gray-600 focus-visible:border-amber-500 dark:focus-visible:border-purple-500"
                 />
               </div>
 
@@ -313,12 +313,12 @@ export default function TeacherCoursesPage() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">All Categories</SelectItem>
-                    <SelectItem value="cyber-security">Cyber Security</SelectItem>
-                    <SelectItem value="ethical-hacking">Ethical Hacking</SelectItem>
+                    <SelectItem value="agentic-ai">Agentic AI</SelectItem>
+                    <SelectItem value="software-development">Software Development</SelectItem>
                     <SelectItem value="ai-ml">AI & Machine Learning</SelectItem>
                     <SelectItem value="data-science">Data Science</SelectItem>
-                    <SelectItem value="iot-embedded">IoT & Embedded</SelectItem>
-                    <SelectItem value="robotics">Robotics</SelectItem>
+                    <SelectItem value="masters-degree">Master&apos;s Degree</SelectItem>
+                    <SelectItem value="cloud-computing">Cloud Computing</SelectItem>
                   </SelectContent>
                 </Select>
 
@@ -382,7 +382,7 @@ export default function TeacherCoursesPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredCourses.map((course) => (
-              <Card key={course.id} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 group">
+              <Card key={course.id} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition duration-fast group">
                 <div className="relative">
                   {/* Course Image */}
                   <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 rounded-t-lg overflow-hidden">
@@ -391,7 +391,7 @@ export default function TeacherCoursesPage() {
                         src={course.image}
                         alt={course.title}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="object-cover group-hover:scale-105 transition-transform duration-fast"
                       />
                     ) : (
                       <div className="flex items-center justify-center h-full">
@@ -447,7 +447,7 @@ export default function TeacherCoursesPage() {
                           </DropdownMenuItem>
                           <DropdownMenuSeparator />
                           <DropdownMenuItem 
-                            className="text-red-600 focus:text-red-600"
+                            className="text-red-600 focus-visible:text-red-600"
                             onClick={() => handleDeleteCourse(course.id)}
                           >
                             <Trash2 className="h-4 w-4 mr-2" />

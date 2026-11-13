@@ -221,7 +221,7 @@ export default function LiveClassPublisher({ teacherId, teacherName }: LiveClass
                   const course = teacherCourses.find(c => c.id === courseId);
                   setSelectedCourseTitle(course?.title || '');
                 }}
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full p-2 border border-gray-300 rounded-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent"
                 required
               >
                 <option value="">Choose a course...</option>
@@ -370,7 +370,7 @@ export default function LiveClassPublisher({ teacherId, teacherName }: LiveClass
                     </div>
                     <div className="w-full bg-red-200 rounded-full h-2">
                       <div 
-                        className="bg-red-500 h-2 rounded-full transition-all duration-1000 animate-pulse"
+                        className="bg-red-500 h-2 rounded-full transition duration-normal animate-pulse"
                         style={{ width: '100%' }}
                       />
                     </div>

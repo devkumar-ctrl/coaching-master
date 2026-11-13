@@ -47,8 +47,9 @@ export async function GET(request: NextRequest) {
           };
         } else if (user.role === 'STUDENT') {
           // Get student-specific stats
+          const studentKey = user.id || user._id.toString();
           const enrollments = await db.collection("enrollments")
-            .find({ studentId: user._id.toString() })
+            .find({ studentId: studentKey })
             .toArray();
 
           const completedCourses = enrollments.filter(e => e.status === 'completed').length;

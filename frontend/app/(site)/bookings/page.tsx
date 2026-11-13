@@ -66,7 +66,7 @@ export default function BookingsPage() {
         {
           id: "1",
           type: "class",
-          title: "Modern Indian History - Freedom Struggle",
+          title: "Data Science Foundations - Statistics & EDA",
           instructor: "Dr. Rajesh Kumar",
           instructorImage: "/instructors/rajesh.jpg",
           date: "2025-01-25",
@@ -76,11 +76,11 @@ export default function BookingsPage() {
           status: "confirmed",
           price: 500,
           paymentStatus: "paid",
-          description: "Comprehensive coverage of the Indian freedom struggle from 1857 to 1947",
+          description: "Descriptive statistics, distributions and exploratory data analysis with Python",
           maxParticipants: 100,
           currentParticipants: 85,
           bookingDate: "2025-01-15",
-          subject: "History"
+          subject: "Data Science"
         },
         {
           id: "2",
@@ -94,13 +94,13 @@ export default function BookingsPage() {
           status: "confirmed",
           price: 1500,
           paymentStatus: "paid",
-          description: "One-on-one mentoring session for geography preparation strategy",
+          description: "One-on-one mentoring session for your career and study plan",
           bookingDate: "2025-01-18",
-          subject: "Geography"
+          subject: "Mentoring"
         },
         {
           id: "3",
-          title: "Essay Writing Workshop",
+          title: "Coding Interview Workshop",
           type: "workshop",
           instructor: "Dr. Kavita Joshi",
           date: "2025-01-27",
@@ -114,12 +114,12 @@ export default function BookingsPage() {
           maxParticipants: 40,
           currentParticipants: 28,
           bookingDate: "2025-01-20",
-          subject: "Essay Writing"
+          subject: "Interview Prep"
         },
         {
           id: "4",
           type: "doubt-session",
-          title: "Economics Doubt Clearing",
+          title: "Agentic AI Doubt Clearing",
           instructor: "Prof. Amit Gupta",
           date: "2025-01-22",
           time: "6:00 PM",
@@ -128,17 +128,17 @@ export default function BookingsPage() {
           status: "completed",
           price: 300,
           paymentStatus: "paid",
-          description: "Interactive session to clear doubts related to Indian economy",
+          description: "Interactive session to clear doubts on agents, tool use and evaluation",
           maxParticipants: 50,
           currentParticipants: 32,
           bookingDate: "2025-01-12",
-          subject: "Economics"
+          subject: "Agentic AI"
         },
         {
           id: "5",
           type: "class",
-          title: "Current Affairs Discussion",
-          instructor: "Editorial Team",
+          title: "Industry Trends Discussion",
+          instructor: "Mentor Team",
           date: "2025-01-28",
           time: "5:00 PM",
           duration: "1.5 hours",
@@ -146,9 +146,9 @@ export default function BookingsPage() {
           status: "cancelled",
           price: 400,
           paymentStatus: "failed",
-          description: "Weekly current affairs discussion and analysis",
+          description: "Weekly discussion on AI industry trends and hiring signals",
           bookingDate: "2025-01-19",
-          subject: "Current Affairs"
+          subject: "Career Services"
         }
       ];
       

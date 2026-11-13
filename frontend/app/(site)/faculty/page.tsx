@@ -218,7 +218,7 @@ export default function FacultyPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredFaculty.map((member) => (
-            <Card key={member.id} className="group hover:shadow-lg transition-all duration-300 border-0 shadow-md">
+            <Card key={member.id} className="group hover:shadow-lg transition duration-fast border-0 shadow-md">
               <CardHeader className="pb-4">
                 <div className="flex items-start gap-4">
                   <div className="relative">

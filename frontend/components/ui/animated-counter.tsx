@@ -87,7 +87,7 @@ export function StatsCard({
 
   return (
     <div className={cn(
-      "bg-background border rounded-lg p-6 hover:shadow-md transition-all duration-300",
+      "bg-background border rounded-lg p-6 hover:shadow-md transition duration-fast",
       className
     )}>
       <div className="flex items-center justify-between mb-2">

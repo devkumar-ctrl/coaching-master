@@ -1,5 +1,48 @@
-import Link from "next/link"
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, MapPin, Phone, Mail } from "lucide-react"
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Youtube,
+  MapPin,
+  Phone,
+  Mail,
+} from "lucide-react"
+import { AppLink } from "@/components/ui/link"
+
+const COMPANY_LINKS = [
+  { href: "/placements#hired", label: "Success Stories" },
+  { href: "/contact", label: "Hire From Us" },
+  { href: "/footer/career", label: "Careers" },
+]
+
+const COURSE_LINKS = [
+  "MS in Computer Science : AI Systems & ML Engineering",
+  "MS in Computer Science : Cloud & AI Infrastructure Engineering",
+  "Professional Certification in Data Science and Agentic AI",
+  "Professional Certification in Software Development with AI & DevOps",
+  "Advanced Certification in Data Science and AI",
+  "Advanced Certification in Software Development and Agentic AI",
+]
+
+const RESOURCE_LINKS = [
+  { href: "/#bytes", label: "Blog" },
+  { href: "/#workshop", label: "Events" },
+  { href: "/placements", label: "Placements" },
+  { href: "/notes", label: "Online Compilers" },
+]
+
+const JOIN_LINKS = [
+  { href: "/auth/signin", label: "Sign Up" },
+  { href: "/contact", label: "Become A Coach" },
+  { href: "/auth/signin", label: "Coach Login" },
+]
+
+const POLICY_LINKS = [
+  { href: "/privacy", label: "Privacy Statement" },
+  { href: "/terms", label: "Terms of Use" },
+  { href: "/cookies", label: "Cookie Policy" },
+]
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -7,125 +50,124 @@ export default function Footer() {
   return (
     <footer className="bg-background border-t border-border dark:border-border/50">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8">
+          {/* Brand + Contact */}
           <div className="space-y-4">
-            <img src="/yuva/yuva-logo.webp" alt="YuvaBot Lab" className="h-10 w-auto" />
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Empowering innovation through technology education, industrial solutions, and career development. Building the future of tech together.
-            </p>
-            <div className="flex space-x-4">
-              <Link href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
-                <Instagram className="h-4 w-4" />
-              </Link>
-              <Link href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
-                <Youtube className="h-4 w-4" />
-              </Link>
-              <Link href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
-                <Facebook className="h-4 w-4" />
-              </Link>
-              <Link href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn">
-                <Linkedin className="h-4 w-4" />
-              </Link>
-              <Link href="https://x.com/" target="_blank" aria-label="X (Twitter)">
-                <Twitter className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
-            <nav className="flex flex-col space-y-2">
-              <Link href="/" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-                Home
-              </Link>
-              <Link href="/about" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-                About Us
-              </Link>
-              <Link href="/courses" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-                Training Programs
-              </Link>
-              <Link href="/faculty" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-                Faculty
-              </Link>
-              <Link href="/contact" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-                Contact
-              </Link>
-            </nav>
-          </div>
-
-          {/* Services */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Our Services</h3>
-            <nav className="flex flex-col space-y-2">
-              <Link href="/courses" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-                Cyber Security Solutions
-              </Link>
-              <Link href="/courses" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-                Industrial Automation
-              </Link>
-              <Link href="/courses" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-                STEM Education
-              </Link>
-              <Link href="/courses" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-                Skill Training
-              </Link>
-              <Link href="/courses" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-                IoT Kits & Hardware
-              </Link>
-              <Link href="/courses" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-                Career & Placement
-              </Link>
-            </nav>
-          </div>
-
-          {/* Contact */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Get In Touch</h3>
+            <img src="/yuva/yuva-logo.webp" alt="AlmaBetter" className="h-10 w-auto" />
             <div className="space-y-3 text-sm">
+              <h3 className="text-lg font-semibold">Contact Us</h3>
+              <div className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-primary shrink-0" aria-hidden="true" />
+                <AppLink href="mailto:admissions@almabetter.com" variant="muted">
+                  admissions@almabetter.com
+                </AppLink>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-primary shrink-0" aria-hidden="true" />
+                <AppLink href="tel:+918046008400" variant="muted">08046008400</AppLink>
+              </div>
               <div className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                <MapPin className="h-4 w-4 text-primary mt-0.5 shrink-0" aria-hidden="true" />
                 <p className="text-muted-foreground">
-                  9/A3 KrishnaPuri Road, Morabadi,<br />
-                  Ranchi, Jharkhand 834008
+                  Official Address
+                  <br />
+                  4th floor, 133/2, Janardhan Towers, Residency Road,
+                  <br />
+                  Bengaluru, Karnataka, 560025
                 </p>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-primary shrink-0" />
-                <Link href="tel:+918340307574" className="text-muted-foreground hover:text-foreground transition-colors">
-                  +91 83403 07574
-                </Link>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-primary shrink-0" />
-                <Link href="mailto:hr@YuvaBot.com" className="text-muted-foreground hover:text-foreground transition-colors">
-                  hr@YuvaBot.com
-                </Link>
-              </div>
-              <p className="text-xs text-muted-foreground pt-1">
-                Mon–Fri: 9AM–6PM · Sat: 9AM–2PM
-              </p>
             </div>
+            <div className="space-y-2">
+              <h3 className="text-lg font-semibold">Follow Us</h3>
+              <div className="flex flex-wrap gap-3">
+                <AppLink href="https://www.facebook.com/AlmaBetterOfficial" external variant="bare" aria-label="Facebook" className="touch-target inline-flex items-center justify-center rounded-md hover:bg-accent">
+                  <Facebook className="h-4 w-4" />
+                </AppLink>
+                <AppLink href="https://www.instagram.com/almabetter/" external variant="bare" aria-label="Instagram" className="touch-target inline-flex items-center justify-center rounded-md hover:bg-accent">
+                  <Instagram className="h-4 w-4" />
+                </AppLink>
+                <AppLink href="https://www.linkedin.com/company/67755156/" external variant="bare" aria-label="LinkedIn" className="touch-target inline-flex items-center justify-center rounded-md hover:bg-accent">
+                  <Linkedin className="h-4 w-4" />
+                </AppLink>
+                <AppLink href="https://twitter.com/AlmaBetter" external variant="bare" aria-label="Twitter" className="touch-target inline-flex items-center justify-center rounded-md hover:bg-accent">
+                  <Twitter className="h-4 w-4" />
+                </AppLink>
+                <AppLink href="https://www.youtube.com/channel/UCg6q42xcuCK6zu-zG4qOXQQ" external variant="bare" aria-label="YouTube" className="touch-target inline-flex items-center justify-center rounded-md hover:bg-accent">
+                  <Youtube className="h-4 w-4" />
+                </AppLink>
+              </div>
+            </div>
+          </div>
+
+          {/* Company */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Company</h3>
+            <nav aria-label="Footer company links" className="flex flex-col space-y-2">
+              {COMPANY_LINKS.map((link) => (
+                <AppLink key={link.label} href={link.href} variant="muted" className="text-sm">
+                  {link.label}
+                </AppLink>
+              ))}
+            </nav>
+          </div>
+
+          {/* Courses */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Courses</h3>
+            <nav aria-label="Footer course links" className="flex flex-col space-y-2">
+              {COURSE_LINKS.map((title) => (
+                <AppLink key={title} href="/courses" variant="muted" className="text-sm">
+                  {title}
+                </AppLink>
+              ))}
+            </nav>
+          </div>
+
+          {/* Resources */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Resources</h3>
+            <nav aria-label="Footer resource links" className="flex flex-col space-y-2">
+              {RESOURCE_LINKS.map((link) => (
+                <AppLink key={link.label} href={link.href} variant="muted" className="text-sm">
+                  {link.label}
+                </AppLink>
+              ))}
+            </nav>
+          </div>
+
+          {/* Join AlmaBetter */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Join AlmaBetter</h3>
+            <nav aria-label="Footer join links" className="flex flex-col space-y-2">
+              {JOIN_LINKS.map((link) => (
+                <AppLink key={link.label} href={link.href} variant="muted" className="text-sm">
+                  {link.label}
+                </AppLink>
+              ))}
+            </nav>
+          </div>
+
+          {/* Policies */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Policies</h3>
+            <nav aria-label="Footer policy links" className="flex flex-col space-y-2">
+              {POLICY_LINKS.map((link) => (
+                <AppLink key={link.label} href={link.href} variant="muted" className="text-sm">
+                  {link.label}
+                </AppLink>
+              ))}
+            </nav>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-muted-foreground text-sm">
-            © {year} YuvaBot Lab Private Limited. All rights reserved.
+            Made with ❤ in Bengaluru, India
           </p>
-          <div className="flex space-x-6">
-            <Link href="/privacy" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="/cookies" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-              Cookie Policy
-            </Link>
-          </div>
+          <p className="text-muted-foreground text-sm">
+            &copy; {year} AlmaBetter
+          </p>
         </div>
       </div>
     </footer>
